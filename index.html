@@ -20,6 +20,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -190,8 +225,7 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
-  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">1) Linear Regression</a>
+  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link active" data-scroll-target="#linear-regression">1) Linear Regression</a>
   <ul class="collapse">
   <li><a href="#idea" id="toc-idea" class="nav-link" data-scroll-target="#idea">Idea</a></li>
   <li><a href="#when-to-use" id="toc-when-to-use" class="nav-link" data-scroll-target="#when-to-use">When to use</a></li>
@@ -262,12 +296,29 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="setup" class="level1">
-<h1>Setup</h1>
-<p>import numpy as np import pandas as pd import matplotlib.pyplot as plt</p>
-<p>from sklearn.model_selection import train_test_split from sklearn.preprocessing import StandardScaler from sklearn.pipeline import Pipeline from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, classification_report</p>
-<hr>
-</section>
+<p><img src="images/user_image.png" class="img-fluid" alt="alt"> # Setup</p>
+<div id="589ce86c" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hi"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Hi</code></pre>
+</div>
+</div>
+<div id="515a533e" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, f1_score, confusion_matrix, classification_report</span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span><span class="dv">10</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>10</code></pre>
+</div>
+</div>
 <section id="linear-regression" class="level1">
 <h1>1) Linear Regression</h1>
 <section id="idea" class="level2">
@@ -283,19 +334,19 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="demo-synthetic" class="level2">
 <h2 class="anchored" data-anchor-id="demo-synthetic">Demo (synthetic)</h2>
-<p>from sklearn.linear_model import LinearRegression from sklearn.metrics import mean_squared_error, r2_score</p>
+<p><code>from sklearn.linear_model import LinearRegression from sklearn.metrics import mean_squared_error, r2_score</code></p>
 </section>
 </section>
 <section id="data" class="level1">
 <h1>Data</h1>
-<p>rng = np.random.default_rng(7) X = rng.uniform(0, 10, size=(120, 1)) y = 3.5*X.squeeze() + 8 + rng.normal(0, 2.0, size=120)</p>
+<p>```rng = np.random.default_rng(7) X = rng.uniform(0, 10, size=(120, 1)) y = 3.5*X.squeeze() + 8 + rng.normal(0, 2.0, size=120)</p>
 <p>X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</p>
 <p>model = LinearRegression() model.fit(X_train, y_train) pred = model.predict(X_test)</p>
-<p>print(“MSE:”, mean_squared_error(y_test, pred)) print(“R2 :”, r2_score(y_test, pred))</p>
+<p>print(“MSE:”, mean_squared_error(y_test, pred)) print(“R2 :”, r2_score(y_test, pred)) ```</p>
 </section>
 <section id="plot" class="level1">
 <h1>Plot</h1>
-<p>plt.scatter(X_test, y_test) plt.scatter(X_test, pred) plt.xlabel(“X”); plt.ylabel(“y”) plt.title(“Linear Regression: true vs predicted”) plt.show()</p>
+<p><code>plt.scatter(X_test, y_test) plt.scatter(X_test, pred) plt.xlabel("X"); plt.ylabel("y") plt.title("Linear Regression: true vs predicted") plt.show()</code></p>
 <hr>
 </section>
 <section id="logistic-regression-classification" class="level1">
@@ -313,12 +364,12 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="demo-breast-cancer-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="demo-breast-cancer-dataset">Demo (Breast Cancer dataset)</h2>
-<p>from sklearn.datasets import load_breast_cancer from sklearn.linear_model import LogisticRegression</p>
+<p>```from sklearn.datasets import load_breast_cancer from sklearn.linear_model import LogisticRegression</p>
 <p>data = load_breast_cancer() X, y = data.data, data.target</p>
 <p>X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=42)</p>
 <p>clf = Pipeline([ (“scaler”, StandardScaler()), (“lr”, LogisticRegression(max_iter=5000))])</p>
 <p>clf.fit(X_train, y_train) pred = clf.predict(X_test)</p>
-<p>print(“Accuracy:”, accuracy_score(y_test, pred)) print(“F1 :”, f1_score(y_test, pred)) print(confusion_matrix(y_test, pred))</p>
+<p>print(“Accuracy:”, accuracy_score(y_test, pred)) print(“F1 :”, f1_score(y_test, pred)) print(confusion_matrix(y_test, pred))```</p>
 <hr>
 </section>
 </section>
@@ -334,10 +385,10 @@ ul.task-list li input[type="checkbox"] {
 <li>Small/medium datasets</li>
 <li>Nonlinear boundaries, simple intuition</li>
 </ul>
-<p>from sklearn.neighbors import KNeighborsClassifier</p>
+<p>```from sklearn.neighbors import KNeighborsClassifier</p>
 <p>knn = Pipeline([ (“scaler”, StandardScaler()), (“knn”, KNeighborsClassifier(n_neighbors=5))])</p>
 <p>knn.fit(X_train, y_train) pred = knn.predict(X_test)</p>
-<p>print(“Accuracy:”, accuracy_score(y_test, pred)) print(classification_report(y_test, pred, target_names=data.target_names))</p>
+<p>print(“Accuracy:”, accuracy_score(y_test, pred)) print(classification_report(y_test, pred, target_names=data.target_names))```</p>
 <hr>
 </section>
 </section>
@@ -353,9 +404,9 @@ ul.task-list li input[type="checkbox"] {
 <li>Mixed feature importance explanations</li>
 <li>Easy visualization (but can overfit)</li>
 </ul>
-<p>from sklearn.tree import DecisionTreeClassifier</p>
+<p>```from sklearn.tree import DecisionTreeClassifier</p>
 <p>tree = DecisionTreeClassifier(max_depth=4, random_state=42) tree.fit(X_train, y_train) pred = tree.predict(X_test)</p>
-<p>print(“Accuracy:”, accuracy_score(y_test, pred))</p>
+<p>print(“Accuracy:”, accuracy_score(y_test, pred))```</p>
 <hr>
 </section>
 </section>
@@ -371,10 +422,10 @@ ul.task-list li input[type="checkbox"] {
 <li>Strong general-purpose model</li>
 <li>Good with tabular data</li>
 </ul>
-<p>from sklearn.ensemble import RandomForestClassifier</p>
+<p>```from sklearn.ensemble import RandomForestClassifier</p>
 <p>rf = RandomForestClassifier( n_estimators=300, max_depth=None, random_state=42, n_jobs=-1 )</p>
 <p>rf.fit(X_train, y_train) pred = rf.predict(X_test)</p>
-<p>print(“Accuracy:”, accuracy_score(y_test, pred))</p>
+<p>print(“Accuracy:”, accuracy_score(y_test, pred))```</p>
 <hr>
 </section>
 </section>
@@ -390,10 +441,10 @@ ul.task-list li input[type="checkbox"] {
 <li>Medium-sized data</li>
 <li>Strong classifier with scaling</li>
 </ul>
-<p>from sklearn.svm import SVC</p>
+<p>```from sklearn.svm import SVC</p>
 <p>svm = Pipeline([ (“scaler”, StandardScaler()), (“svc”, SVC(kernel=“rbf”, C=2.0, gamma=“scale”))])</p>
 <p>svm.fit(X_train, y_train) pred = svm.predict(X_test)</p>
-<p>print(“Accuracy:”, accuracy_score(y_test, pred))</p>
+<p>print(“Accuracy:”, accuracy_score(y_test, pred))```</p>
 <hr>
 </section>
 </section>
@@ -409,9 +460,9 @@ ul.task-list li input[type="checkbox"] {
 <li>Text classification, quick baselines</li>
 <li>Very fast</li>
 </ul>
-<p>from sklearn.naive_bayes import GaussianNB</p>
+<p>```from sklearn.naive_bayes import GaussianNB</p>
 <p>nb = GaussianNB() nb.fit(X_train, y_train) pred = nb.predict(X_test)</p>
-<p>print(“Accuracy:”, accuracy_score(y_test, pred))</p>
+<p>print(“Accuracy:”, accuracy_score(y_test, pred))```</p>
 <hr>
 </section>
 </section>
@@ -427,10 +478,10 @@ ul.task-list li input[type="checkbox"] {
 <li>Market segmentation, grouping patterns</li>
 <li>Quick exploratory clustering</li>
 </ul>
-<p>from sklearn.datasets import make_blobs from sklearn.cluster import KMeans</p>
+<p>```from sklearn.datasets import make_blobs from sklearn.cluster import KMeans</p>
 <p>Xc, _ = make_blobs(n_samples=300, centers=4, random_state=42, cluster_std=1.2)</p>
 <p>kmeans = KMeans(n_clusters=4, n_init=10, random_state=42) labels = kmeans.fit_predict(Xc)</p>
-<p>plt.scatter(Xc[:,0], Xc[:,1], c=labels) plt.title(“k-Means clustering”) plt.show()</p>
+<p>plt.scatter(Xc[:,0], Xc[:,1], c=labels) plt.title(“k-Means clustering”) plt.show()```</p>
 <hr>
 </section>
 </section>
