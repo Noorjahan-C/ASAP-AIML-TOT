@@ -18,7 +18,133 @@
     "href": "index.html",
     "title": "My Personal Webpage",
     "section": "",
-    "text": "Welcome to my personal page! I thrive on solving complex problems and love turning innovative ideas into reality. Whether I’m coding, designing, or exploring new fields, I bring dedication and curiosity to everything I do. Outside of work, I enjoy hiking, reading science fiction, and experimenting with new recipes. Here, you’ll find insights into my projects, interests, and the journey I’m on to make a positive impact in the world. Thank you for visiting, and I hope you find something that inspires you!\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+    "text": "import numpy as np import pandas as pd import matplotlib.pyplot as plt\nfrom sklearn.model_selection import train_test_split from sklearn.preprocessing import StandardScaler from sklearn.pipeline import Pipeline from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, classification_report"
+  },
+  {
+    "objectID": "index.html#idea",
+    "href": "index.html#idea",
+    "title": "My Personal Webpage",
+    "section": "Idea",
+    "text": "Idea\nPredict a continuous value using a straight-line relationship."
+  },
+  {
+    "objectID": "index.html#when-to-use",
+    "href": "index.html#when-to-use",
+    "title": "My Personal Webpage",
+    "section": "When to use",
+    "text": "When to use\n\nHouse price, marks prediction, trend estimation\nBaseline model for regression"
+  },
+  {
+    "objectID": "index.html#demo-synthetic",
+    "href": "index.html#demo-synthetic",
+    "title": "My Personal Webpage",
+    "section": "Demo (synthetic)",
+    "text": "Demo (synthetic)\nfrom sklearn.linear_model import LinearRegression from sklearn.metrics import mean_squared_error, r2_score"
+  },
+  {
+    "objectID": "index.html#idea-1",
+    "href": "index.html#idea-1",
+    "title": "My Personal Webpage",
+    "section": "Idea",
+    "text": "Idea\nPredict class probability using a sigmoid; good baseline for binary/multiclass."
+  },
+  {
+    "objectID": "index.html#when-to-use-1",
+    "href": "index.html#when-to-use-1",
+    "title": "My Personal Webpage",
+    "section": "When to use",
+    "text": "When to use\n\nSpam vs not spam, disease yes/no\nHighly interpretable baseline"
+  },
+  {
+    "objectID": "index.html#demo-breast-cancer-dataset",
+    "href": "index.html#demo-breast-cancer-dataset",
+    "title": "My Personal Webpage",
+    "section": "Demo (Breast Cancer dataset)",
+    "text": "Demo (Breast Cancer dataset)\nfrom sklearn.datasets import load_breast_cancer from sklearn.linear_model import LogisticRegression\ndata = load_breast_cancer() X, y = data.data, data.target\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=42)\nclf = Pipeline([ (“scaler”, StandardScaler()), (“lr”, LogisticRegression(max_iter=5000))])\nclf.fit(X_train, y_train) pred = clf.predict(X_test)\nprint(“Accuracy:”, accuracy_score(y_test, pred)) print(“F1 :”, f1_score(y_test, pred)) print(confusion_matrix(y_test, pred))"
+  },
+  {
+    "objectID": "index.html#idea-2",
+    "href": "index.html#idea-2",
+    "title": "My Personal Webpage",
+    "section": "Idea",
+    "text": "Idea\nA point is classified by the majority label among its nearest neighbors."
+  },
+  {
+    "objectID": "index.html#when-to-use-2",
+    "href": "index.html#when-to-use-2",
+    "title": "My Personal Webpage",
+    "section": "When to use",
+    "text": "When to use\n\nSmall/medium datasets\nNonlinear boundaries, simple intuition\n\nfrom sklearn.neighbors import KNeighborsClassifier\nknn = Pipeline([ (“scaler”, StandardScaler()), (“knn”, KNeighborsClassifier(n_neighbors=5))])\nknn.fit(X_train, y_train) pred = knn.predict(X_test)\nprint(“Accuracy:”, accuracy_score(y_test, pred)) print(classification_report(y_test, pred, target_names=data.target_names))"
+  },
+  {
+    "objectID": "index.html#idea-3",
+    "href": "index.html#idea-3",
+    "title": "My Personal Webpage",
+    "section": "Idea",
+    "text": "Idea\nSplit data by feature thresholds to reduce impurity (Gini/Entropy)."
+  },
+  {
+    "objectID": "index.html#when-to-use-3",
+    "href": "index.html#when-to-use-3",
+    "title": "My Personal Webpage",
+    "section": "When to use",
+    "text": "When to use\n\nMixed feature importance explanations\nEasy visualization (but can overfit)\n\nfrom sklearn.tree import DecisionTreeClassifier\ntree = DecisionTreeClassifier(max_depth=4, random_state=42) tree.fit(X_train, y_train) pred = tree.predict(X_test)\nprint(“Accuracy:”, accuracy_score(y_test, pred))"
+  },
+  {
+    "objectID": "index.html#idea-4",
+    "href": "index.html#idea-4",
+    "title": "My Personal Webpage",
+    "section": "Idea",
+    "text": "Idea\nMany trees + bagging; reduces overfitting and improves stability."
+  },
+  {
+    "objectID": "index.html#when-to-use-4",
+    "href": "index.html#when-to-use-4",
+    "title": "My Personal Webpage",
+    "section": "When to use",
+    "text": "When to use\n\nStrong general-purpose model\nGood with tabular data\n\nfrom sklearn.ensemble import RandomForestClassifier\nrf = RandomForestClassifier( n_estimators=300, max_depth=None, random_state=42, n_jobs=-1 )\nrf.fit(X_train, y_train) pred = rf.predict(X_test)\nprint(“Accuracy:”, accuracy_score(y_test, pred))"
+  },
+  {
+    "objectID": "index.html#idea-5",
+    "href": "index.html#idea-5",
+    "title": "My Personal Webpage",
+    "section": "Idea",
+    "text": "Idea\nFind a maximum-margin boundary; kernels allow nonlinear separation."
+  },
+  {
+    "objectID": "index.html#when-to-use-5",
+    "href": "index.html#when-to-use-5",
+    "title": "My Personal Webpage",
+    "section": "When to use",
+    "text": "When to use\n\nMedium-sized data\nStrong classifier with scaling\n\nfrom sklearn.svm import SVC\nsvm = Pipeline([ (“scaler”, StandardScaler()), (“svc”, SVC(kernel=“rbf”, C=2.0, gamma=“scale”))])\nsvm.fit(X_train, y_train) pred = svm.predict(X_test)\nprint(“Accuracy:”, accuracy_score(y_test, pred))"
+  },
+  {
+    "objectID": "index.html#idea-6",
+    "href": "index.html#idea-6",
+    "title": "My Personal Webpage",
+    "section": "Idea",
+    "text": "Idea\nProbability-based classifier assuming feature independence."
+  },
+  {
+    "objectID": "index.html#when-to-use-6",
+    "href": "index.html#when-to-use-6",
+    "title": "My Personal Webpage",
+    "section": "When to use",
+    "text": "When to use\n\nText classification, quick baselines\nVery fast\n\nfrom sklearn.naive_bayes import GaussianNB\nnb = GaussianNB() nb.fit(X_train, y_train) pred = nb.predict(X_test)\nprint(“Accuracy:”, accuracy_score(y_test, pred))"
+  },
+  {
+    "objectID": "index.html#idea-7",
+    "href": "index.html#idea-7",
+    "title": "My Personal Webpage",
+    "section": "Idea",
+    "text": "Idea\nUnsupervised grouping by minimizing distance to cluster centers."
+  },
+  {
+    "objectID": "index.html#when-to-use-7",
+    "href": "index.html#when-to-use-7",
+    "title": "My Personal Webpage",
+    "section": "When to use",
+    "text": "When to use\n\nMarket segmentation, grouping patterns\nQuick exploratory clustering\n\nfrom sklearn.datasets import make_blobs from sklearn.cluster import KMeans\nXc, _ = make_blobs(n_samples=300, centers=4, random_state=42, cluster_std=1.2)\nkmeans = KMeans(n_clusters=4, n_init=10, random_state=42) labels = kmeans.fit_predict(Xc)\nplt.scatter(Xc[:,0], Xc[:,1], c=labels) plt.title(“k-Means clustering”) plt.show()"
   },
   {
     "objectID": "posts/another_post.html",

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>My Personal Webpage – A Journey Within</title>
+<title>My Personal Webpage – A Journey Within M</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -81,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">A Journey Within</span>
+    <span class="navbar-title">A Journey Within M</span>
     </a>
   </div>
             <div id="quarto-search" class="" title="Search"></div>
@@ -130,9 +130,6 @@ ul.task-list li input[type="checkbox"] {
       </button>
     </div>
   </nav>
-  <div id="quarto-announcement" data-announcement-id="df65f1b3b6d5617be2e160b93d87bd33" class="alert alert-primary hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
-<p><strong>Alert</strong> - This Website is created using <code>Quarto</code> and Published as Github Pages</p>
-</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
 </header>
 <!-- content -->
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
@@ -188,8 +185,60 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#setup" id="toc-setup" class="nav-link active" data-scroll-target="#setup">Setup</a></li>
+  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression">1) Linear Regression</a>
+  <ul class="collapse">
+  <li><a href="#idea" id="toc-idea" class="nav-link" data-scroll-target="#idea">Idea</a></li>
+  <li><a href="#when-to-use" id="toc-when-to-use" class="nav-link" data-scroll-target="#when-to-use">When to use</a></li>
+  <li><a href="#demo-synthetic" id="toc-demo-synthetic" class="nav-link" data-scroll-target="#demo-synthetic">Demo (synthetic)</a></li>
+  </ul></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
+  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot">Plot</a></li>
+  <li><a href="#logistic-regression-classification" id="toc-logistic-regression-classification" class="nav-link" data-scroll-target="#logistic-regression-classification">2) Logistic Regression (Classification)</a>
+  <ul class="collapse">
+  <li><a href="#idea-1" id="toc-idea-1" class="nav-link" data-scroll-target="#idea-1">Idea</a></li>
+  <li><a href="#when-to-use-1" id="toc-when-to-use-1" class="nav-link" data-scroll-target="#when-to-use-1">When to use</a></li>
+  <li><a href="#demo-breast-cancer-dataset" id="toc-demo-breast-cancer-dataset" class="nav-link" data-scroll-target="#demo-breast-cancer-dataset">Demo (Breast Cancer dataset)</a></li>
+  </ul></li>
+  <li><a href="#k-nn" id="toc-k-nn" class="nav-link" data-scroll-target="#k-nn">3) k-NN</a>
+  <ul class="collapse">
+  <li><a href="#idea-2" id="toc-idea-2" class="nav-link" data-scroll-target="#idea-2">Idea</a></li>
+  <li><a href="#when-to-use-2" id="toc-when-to-use-2" class="nav-link" data-scroll-target="#when-to-use-2">When to use</a></li>
+  </ul></li>
+  <li><a href="#decision-tree" id="toc-decision-tree" class="nav-link" data-scroll-target="#decision-tree">4) Decision Tree</a>
+  <ul class="collapse">
+  <li><a href="#idea-3" id="toc-idea-3" class="nav-link" data-scroll-target="#idea-3">Idea</a></li>
+  <li><a href="#when-to-use-3" id="toc-when-to-use-3" class="nav-link" data-scroll-target="#when-to-use-3">When to use</a></li>
+  </ul></li>
+  <li><a href="#random-forest" id="toc-random-forest" class="nav-link" data-scroll-target="#random-forest">5) Random Forest</a>
+  <ul class="collapse">
+  <li><a href="#idea-4" id="toc-idea-4" class="nav-link" data-scroll-target="#idea-4">Idea</a></li>
+  <li><a href="#when-to-use-4" id="toc-when-to-use-4" class="nav-link" data-scroll-target="#when-to-use-4">When to use</a></li>
+  </ul></li>
+  <li><a href="#support-vector-machine-svm" id="toc-support-vector-machine-svm" class="nav-link" data-scroll-target="#support-vector-machine-svm">6) Support Vector Machine (SVM)</a>
+  <ul class="collapse">
+  <li><a href="#idea-5" id="toc-idea-5" class="nav-link" data-scroll-target="#idea-5">Idea</a></li>
+  <li><a href="#when-to-use-5" id="toc-when-to-use-5" class="nav-link" data-scroll-target="#when-to-use-5">When to use</a></li>
+  </ul></li>
+  <li><a href="#naive-bayes" id="toc-naive-bayes" class="nav-link" data-scroll-target="#naive-bayes">7) Naive Bayes</a>
+  <ul class="collapse">
+  <li><a href="#idea-6" id="toc-idea-6" class="nav-link" data-scroll-target="#idea-6">Idea</a></li>
+  <li><a href="#when-to-use-6" id="toc-when-to-use-6" class="nav-link" data-scroll-target="#when-to-use-6">When to use</a></li>
+  </ul></li>
+  <li><a href="#k-means-clustering" id="toc-k-means-clustering" class="nav-link" data-scroll-target="#k-means-clustering">8) k-Means (Clustering)</a>
+  <ul class="collapse">
+  <li><a href="#idea-7" id="toc-idea-7" class="nav-link" data-scroll-target="#idea-7">Idea</a></li>
+  <li><a href="#when-to-use-7" id="toc-when-to-use-7" class="nav-link" data-scroll-target="#when-to-use-7">When to use</a></li>
+  </ul></li>
+  <li><a href="#quick-comparison-table" id="toc-quick-comparison-table" class="nav-link" data-scroll-target="#quick-comparison-table">Quick Comparison Table</a></li>
+  <li><a href="#homework-ideas" id="toc-homework-ideas" class="nav-link" data-scroll-target="#homework-ideas">Homework Ideas</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -213,10 +262,233 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Welcome to my personal page! I thrive on solving complex problems and love turning innovative ideas into reality. Whether I’m coding, designing, or exploring new fields, I bring dedication and curiosity to everything I do. Outside of work, I enjoy hiking, reading science fiction, and experimenting with new recipes. Here, you’ll find insights into my projects, interests, and the journey I’m on to make a positive impact in the world. Thank you for visiting, and I hope you find something that inspires you!</p>
-<p>To learn more about Quarto websites visit <a href="https://quarto.org/docs/websites" class="uri">https://quarto.org/docs/websites</a>.</p>
+<section id="setup" class="level1">
+<h1>Setup</h1>
+<p>import numpy as np import pandas as pd import matplotlib.pyplot as plt</p>
+<p>from sklearn.model_selection import train_test_split from sklearn.preprocessing import StandardScaler from sklearn.pipeline import Pipeline from sklearn.metrics import accuracy_score, f1_score, confusion_matrix, classification_report</p>
+<hr>
+</section>
+<section id="linear-regression" class="level1">
+<h1>1) Linear Regression</h1>
+<section id="idea" class="level2">
+<h2 class="anchored" data-anchor-id="idea">Idea</h2>
+<p>Predict a continuous value using a straight-line relationship.</p>
+</section>
+<section id="when-to-use" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-use">When to use</h2>
+<ul>
+<li>House price, marks prediction, trend estimation</li>
+<li>Baseline model for regression</li>
+</ul>
+</section>
+<section id="demo-synthetic" class="level2">
+<h2 class="anchored" data-anchor-id="demo-synthetic">Demo (synthetic)</h2>
+<p>from sklearn.linear_model import LinearRegression from sklearn.metrics import mean_squared_error, r2_score</p>
+</section>
+</section>
+<section id="data" class="level1">
+<h1>Data</h1>
+<p>rng = np.random.default_rng(7) X = rng.uniform(0, 10, size=(120, 1)) y = 3.5*X.squeeze() + 8 + rng.normal(0, 2.0, size=120)</p>
+<p>X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</p>
+<p>model = LinearRegression() model.fit(X_train, y_train) pred = model.predict(X_test)</p>
+<p>print(“MSE:”, mean_squared_error(y_test, pred)) print(“R2 :”, r2_score(y_test, pred))</p>
+</section>
+<section id="plot" class="level1">
+<h1>Plot</h1>
+<p>plt.scatter(X_test, y_test) plt.scatter(X_test, pred) plt.xlabel(“X”); plt.ylabel(“y”) plt.title(“Linear Regression: true vs predicted”) plt.show()</p>
+<hr>
+</section>
+<section id="logistic-regression-classification" class="level1">
+<h1>2) Logistic Regression (Classification)</h1>
+<section id="idea-1" class="level2">
+<h2 class="anchored" data-anchor-id="idea-1">Idea</h2>
+<p>Predict class probability using a sigmoid; good baseline for binary/multiclass.</p>
+</section>
+<section id="when-to-use-1" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-use-1">When to use</h2>
+<ul>
+<li>Spam vs not spam, disease yes/no</li>
+<li>Highly interpretable baseline</li>
+</ul>
+</section>
+<section id="demo-breast-cancer-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="demo-breast-cancer-dataset">Demo (Breast Cancer dataset)</h2>
+<p>from sklearn.datasets import load_breast_cancer from sklearn.linear_model import LogisticRegression</p>
+<p>data = load_breast_cancer() X, y = data.data, data.target</p>
+<p>X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=42)</p>
+<p>clf = Pipeline([ (“scaler”, StandardScaler()), (“lr”, LogisticRegression(max_iter=5000))])</p>
+<p>clf.fit(X_train, y_train) pred = clf.predict(X_test)</p>
+<p>print(“Accuracy:”, accuracy_score(y_test, pred)) print(“F1 :”, f1_score(y_test, pred)) print(confusion_matrix(y_test, pred))</p>
+<hr>
+</section>
+</section>
+<section id="k-nn" class="level1">
+<h1>3) k-NN</h1>
+<section id="idea-2" class="level2">
+<h2 class="anchored" data-anchor-id="idea-2">Idea</h2>
+<p>A point is classified by the majority label among its nearest neighbors.</p>
+</section>
+<section id="when-to-use-2" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-use-2">When to use</h2>
+<ul>
+<li>Small/medium datasets</li>
+<li>Nonlinear boundaries, simple intuition</li>
+</ul>
+<p>from sklearn.neighbors import KNeighborsClassifier</p>
+<p>knn = Pipeline([ (“scaler”, StandardScaler()), (“knn”, KNeighborsClassifier(n_neighbors=5))])</p>
+<p>knn.fit(X_train, y_train) pred = knn.predict(X_test)</p>
+<p>print(“Accuracy:”, accuracy_score(y_test, pred)) print(classification_report(y_test, pred, target_names=data.target_names))</p>
+<hr>
+</section>
+</section>
+<section id="decision-tree" class="level1">
+<h1>4) Decision Tree</h1>
+<section id="idea-3" class="level2">
+<h2 class="anchored" data-anchor-id="idea-3">Idea</h2>
+<p>Split data by feature thresholds to reduce impurity (Gini/Entropy).</p>
+</section>
+<section id="when-to-use-3" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-use-3">When to use</h2>
+<ul>
+<li>Mixed feature importance explanations</li>
+<li>Easy visualization (but can overfit)</li>
+</ul>
+<p>from sklearn.tree import DecisionTreeClassifier</p>
+<p>tree = DecisionTreeClassifier(max_depth=4, random_state=42) tree.fit(X_train, y_train) pred = tree.predict(X_test)</p>
+<p>print(“Accuracy:”, accuracy_score(y_test, pred))</p>
+<hr>
+</section>
+</section>
+<section id="random-forest" class="level1">
+<h1>5) Random Forest</h1>
+<section id="idea-4" class="level2">
+<h2 class="anchored" data-anchor-id="idea-4">Idea</h2>
+<p>Many trees + bagging; reduces overfitting and improves stability.</p>
+</section>
+<section id="when-to-use-4" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-use-4">When to use</h2>
+<ul>
+<li>Strong general-purpose model</li>
+<li>Good with tabular data</li>
+</ul>
+<p>from sklearn.ensemble import RandomForestClassifier</p>
+<p>rf = RandomForestClassifier( n_estimators=300, max_depth=None, random_state=42, n_jobs=-1 )</p>
+<p>rf.fit(X_train, y_train) pred = rf.predict(X_test)</p>
+<p>print(“Accuracy:”, accuracy_score(y_test, pred))</p>
+<hr>
+</section>
+</section>
+<section id="support-vector-machine-svm" class="level1">
+<h1>6) Support Vector Machine (SVM)</h1>
+<section id="idea-5" class="level2">
+<h2 class="anchored" data-anchor-id="idea-5">Idea</h2>
+<p>Find a maximum-margin boundary; kernels allow nonlinear separation.</p>
+</section>
+<section id="when-to-use-5" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-use-5">When to use</h2>
+<ul>
+<li>Medium-sized data</li>
+<li>Strong classifier with scaling</li>
+</ul>
+<p>from sklearn.svm import SVC</p>
+<p>svm = Pipeline([ (“scaler”, StandardScaler()), (“svc”, SVC(kernel=“rbf”, C=2.0, gamma=“scale”))])</p>
+<p>svm.fit(X_train, y_train) pred = svm.predict(X_test)</p>
+<p>print(“Accuracy:”, accuracy_score(y_test, pred))</p>
+<hr>
+</section>
+</section>
+<section id="naive-bayes" class="level1">
+<h1>7) Naive Bayes</h1>
+<section id="idea-6" class="level2">
+<h2 class="anchored" data-anchor-id="idea-6">Idea</h2>
+<p>Probability-based classifier assuming feature independence.</p>
+</section>
+<section id="when-to-use-6" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-use-6">When to use</h2>
+<ul>
+<li>Text classification, quick baselines</li>
+<li>Very fast</li>
+</ul>
+<p>from sklearn.naive_bayes import GaussianNB</p>
+<p>nb = GaussianNB() nb.fit(X_train, y_train) pred = nb.predict(X_test)</p>
+<p>print(“Accuracy:”, accuracy_score(y_test, pred))</p>
+<hr>
+</section>
+</section>
+<section id="k-means-clustering" class="level1">
+<h1>8) k-Means (Clustering)</h1>
+<section id="idea-7" class="level2">
+<h2 class="anchored" data-anchor-id="idea-7">Idea</h2>
+<p>Unsupervised grouping by minimizing distance to cluster centers.</p>
+</section>
+<section id="when-to-use-7" class="level2">
+<h2 class="anchored" data-anchor-id="when-to-use-7">When to use</h2>
+<ul>
+<li>Market segmentation, grouping patterns</li>
+<li>Quick exploratory clustering</li>
+</ul>
+<p>from sklearn.datasets import make_blobs from sklearn.cluster import KMeans</p>
+<p>Xc, _ = make_blobs(n_samples=300, centers=4, random_state=42, cluster_std=1.2)</p>
+<p>kmeans = KMeans(n_clusters=4, n_init=10, random_state=42) labels = kmeans.fit_predict(Xc)</p>
+<p>plt.scatter(Xc[:,0], Xc[:,1], c=labels) plt.title(“k-Means clustering”) plt.show()</p>
+<hr>
+</section>
+</section>
+<section id="quick-comparison-table" class="level1">
+<h1>Quick Comparison Table</h1>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 20%">
+<col style="width: 24%">
+<col style="width: 18%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task</th>
+<th>Good baseline</th>
+<th>Strong tabular</th>
+<th>Interpretable</th>
+<th>Handles nonlinearity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Regression</td>
+<td>Linear Regression</td>
+<td>Random Forest Regressor</td>
+<td>Linear Regression</td>
+<td>RF / SVR</td>
+</tr>
+<tr class="even">
+<td>Classification</td>
+<td>Logistic Regression</td>
+<td>Random Forest</td>
+<td>LR / Tree</td>
+<td>SVM / RF / kNN</td>
+</tr>
+<tr class="odd">
+<td>Clustering</td>
+<td>k-Means</td>
+<td>—</td>
+<td>Medium</td>
+<td>Depends</td>
+</tr>
+</tbody>
+</table>
+<hr>
+</section>
+<section id="homework-ideas" class="level1">
+<h1>Homework Ideas</h1>
+<ol type="1">
+<li>Train <strong>Logistic Regression + Random Forest</strong> and compare <strong>F1</strong>.</li>
+<li>Add <strong>hyperparameter tuning</strong> (GridSearchCV) for SVM or RF.</li>
+<li>Plot <strong>feature importance</strong> for Random Forest.</li>
+</ol>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -292,7 +564,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/Noorjahan-C\.github\.io\/ASAP-AIML-TOT\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
