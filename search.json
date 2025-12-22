@@ -39,7 +39,7 @@
     "href": "index.html#demo-synthetic",
     "title": "My Personal Webpage",
     "section": "Demo (synthetic)",
-    "text": "Demo (synthetic)\nfrom sklearn.linear_model import LinearRegression from sklearn.metrics import mean_squared_error, r2_score"
+    "text": "Demo (synthetic)\n\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error, r2_score\n\n# Data\n\nrng = np.random.default_rng(7)\nX = rng.uniform(0, 10, size=(120, 1))\ny = 3.5*X.squeeze() + 8 + rng.normal(0, 2.0, size=120)\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\npred = model.predict(X_test)\n\nprint(\"MSE:\", mean_squared_error(y_test, pred))\nprint(\"R2 :\", r2_score(y_test, pred))\n\n# Plot\n\nplt.scatter(X_test, y_test)\nplt.scatter(X_test, pred)\nplt.xlabel(\"X\"); plt.ylabel(\"y\")\nplt.title(\"Linear Regression: true vs predicted\")\nplt.show()\n\nMSE: 3.4522247956202796\nR2 : 0.942791028778986"
   },
   {
     "objectID": "index.html#idea-1",
@@ -60,7 +60,7 @@
     "href": "index.html#demo-breast-cancer-dataset",
     "title": "My Personal Webpage",
     "section": "Demo (Breast Cancer dataset)",
-    "text": "Demo (Breast Cancer dataset)\n```from sklearn.datasets import load_breast_cancer from sklearn.linear_model import LogisticRegression\ndata = load_breast_cancer() X, y = data.data, data.target\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=42)\nclf = Pipeline([ (“scaler”, StandardScaler()), (“lr”, LogisticRegression(max_iter=5000))])\nclf.fit(X_train, y_train) pred = clf.predict(X_test)\nprint(“Accuracy:”, accuracy_score(y_test, pred)) print(“F1 :”, f1_score(y_test, pred)) print(confusion_matrix(y_test, pred))```"
+    "text": "Demo (Breast Cancer dataset)\n\nfrom sklearn.datasets import load_breast_cancer\nfrom sklearn.linear_model import LogisticRegression\n\ndata = load_breast_cancer()\nX, y = data.data, data.target\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=42)\n\nclf = Pipeline([\n(\"scaler\", StandardScaler()),\n(\"lr\", LogisticRegression(max_iter=5000))\n])\n\nclf.fit(X_train, y_train)\npred = clf.predict(X_test)\n\nprint(\"Accuracy:\", accuracy_score(y_test, pred))\nprint(\"F1      :\", f1_score(y_test, pred))\nprint(confusion_matrix(y_test, pred))\n\nAccuracy: 0.9824561403508771\nF1      : 0.9861111111111112\n[[41  1]\n [ 1 71]]"
   },
   {
     "objectID": "index.html#idea-2",
@@ -74,7 +74,7 @@
     "href": "index.html#when-to-use-2",
     "title": "My Personal Webpage",
     "section": "When to use",
-    "text": "When to use\n\nSmall/medium datasets\nNonlinear boundaries, simple intuition\n\n```from sklearn.neighbors import KNeighborsClassifier\nknn = Pipeline([ (“scaler”, StandardScaler()), (“knn”, KNeighborsClassifier(n_neighbors=5))])\nknn.fit(X_train, y_train) pred = knn.predict(X_test)\nprint(“Accuracy:”, accuracy_score(y_test, pred)) print(classification_report(y_test, pred, target_names=data.target_names))```"
+    "text": "When to use\n\nSmall/medium datasets\nNonlinear boundaries, simple intuition\n\n\nfrom sklearn.neighbors import KNeighborsClassifier\n\nknn = Pipeline([\n(\"scaler\", StandardScaler()),\n(\"knn\", KNeighborsClassifier(n_neighbors=5))\n])\n\nknn.fit(X_train, y_train)\npred = knn.predict(X_test)\n\nprint(\"Accuracy:\", accuracy_score(y_test, pred))\nprint(classification_report(y_test, pred, target_names=data.target_names))\n\nAccuracy: 0.956140350877193\n              precision    recall  f1-score   support\n\n   malignant       0.95      0.93      0.94        42\n      benign       0.96      0.97      0.97        72\n\n    accuracy                           0.96       114\n   macro avg       0.96      0.95      0.95       114\nweighted avg       0.96      0.96      0.96       114"
   },
   {
     "objectID": "index.html#idea-3",
@@ -88,7 +88,7 @@
     "href": "index.html#when-to-use-3",
     "title": "My Personal Webpage",
     "section": "When to use",
-    "text": "When to use\n\nMixed feature importance explanations\nEasy visualization (but can overfit)\n\n```from sklearn.tree import DecisionTreeClassifier\ntree = DecisionTreeClassifier(max_depth=4, random_state=42) tree.fit(X_train, y_train) pred = tree.predict(X_test)\nprint(“Accuracy:”, accuracy_score(y_test, pred))```"
+    "text": "When to use\n\nMixed feature importance explanations\nEasy visualization (but can overfit)\n\n\nfrom sklearn.tree import DecisionTreeClassifier\n\ntree = DecisionTreeClassifier(max_depth=4, random_state=42)\ntree.fit(X_train, y_train)\npred = tree.predict(X_test)\n\nprint(\"Accuracy:\", accuracy_score(y_test, pred))\n\nAccuracy: 0.9385964912280702"
   },
   {
     "objectID": "index.html#idea-4",
@@ -102,7 +102,7 @@
     "href": "index.html#when-to-use-4",
     "title": "My Personal Webpage",
     "section": "When to use",
-    "text": "When to use\n\nStrong general-purpose model\nGood with tabular data\n\n```from sklearn.ensemble import RandomForestClassifier\nrf = RandomForestClassifier( n_estimators=300, max_depth=None, random_state=42, n_jobs=-1 )\nrf.fit(X_train, y_train) pred = rf.predict(X_test)\nprint(“Accuracy:”, accuracy_score(y_test, pred))```"
+    "text": "When to use\n\nStrong general-purpose model\nGood with tabular data\n\n\nfrom sklearn.ensemble import RandomForestClassifier\n\nrf = RandomForestClassifier(\nn_estimators=300,\nmax_depth=None,\nrandom_state=42,\nn_jobs=-1\n)\n\nrf.fit(X_train, y_train)\npred = rf.predict(X_test)\n\nprint(\"Accuracy:\", accuracy_score(y_test, pred))\n\nAccuracy: 0.9473684210526315"
   },
   {
     "objectID": "index.html#idea-5",
@@ -116,7 +116,7 @@
     "href": "index.html#when-to-use-5",
     "title": "My Personal Webpage",
     "section": "When to use",
-    "text": "When to use\n\nMedium-sized data\nStrong classifier with scaling\n\n```from sklearn.svm import SVC\nsvm = Pipeline([ (“scaler”, StandardScaler()), (“svc”, SVC(kernel=“rbf”, C=2.0, gamma=“scale”))])\nsvm.fit(X_train, y_train) pred = svm.predict(X_test)\nprint(“Accuracy:”, accuracy_score(y_test, pred))```"
+    "text": "When to use\n\nMedium-sized data\nStrong classifier with scaling\n\n\nfrom sklearn.svm import SVC\n\nsvm = Pipeline([\n(\"scaler\", StandardScaler()),\n(\"svc\", SVC(kernel=\"rbf\", C=2.0, gamma=\"scale\"))\n])\n\nsvm.fit(X_train, y_train)\npred = svm.predict(X_test)\n\nprint(\"Accuracy:\", accuracy_score(y_test, pred))\n\nAccuracy: 0.9824561403508771"
   },
   {
     "objectID": "index.html#idea-6",
@@ -130,7 +130,7 @@
     "href": "index.html#when-to-use-6",
     "title": "My Personal Webpage",
     "section": "When to use",
-    "text": "When to use\n\nText classification, quick baselines\nVery fast\n\n```from sklearn.naive_bayes import GaussianNB\nnb = GaussianNB() nb.fit(X_train, y_train) pred = nb.predict(X_test)\nprint(“Accuracy:”, accuracy_score(y_test, pred))```"
+    "text": "When to use\n\nText classification, quick baselines\nVery fast\n\n\nfrom sklearn.naive_bayes import GaussianNB\n\nnb = GaussianNB()\nnb.fit(X_train, y_train)\npred = nb.predict(X_test)\n\nprint(\"Accuracy:\", accuracy_score(y_test, pred))\n\nAccuracy: 0.9385964912280702"
   },
   {
     "objectID": "index.html#idea-7",
@@ -144,7 +144,7 @@
     "href": "index.html#when-to-use-7",
     "title": "My Personal Webpage",
     "section": "When to use",
-    "text": "When to use\n\nMarket segmentation, grouping patterns\nQuick exploratory clustering\n\n```from sklearn.datasets import make_blobs from sklearn.cluster import KMeans\nXc, _ = make_blobs(n_samples=300, centers=4, random_state=42, cluster_std=1.2)\nkmeans = KMeans(n_clusters=4, n_init=10, random_state=42) labels = kmeans.fit_predict(Xc)\nplt.scatter(Xc[:,0], Xc[:,1], c=labels) plt.title(“k-Means clustering”) plt.show()```"
+    "text": "When to use\n\nMarket segmentation, grouping patterns\nQuick exploratory clustering\n\n\nfrom sklearn.datasets import make_blobs\nfrom sklearn.cluster import KMeans\n\nXc, _ = make_blobs(n_samples=300, centers=4, random_state=42, cluster_std=1.2)\n\nkmeans = KMeans(n_clusters=4, n_init=10, random_state=42)\nlabels = kmeans.fit_predict(Xc)\n\nplt.scatter(Xc[:,0], Xc[:,1], c=labels)\nplt.title(\"k-Means clustering\")\nplt.show()\n\nC:\\Users\\noors\\anaconda3\\envs\\quarto\\Lib\\site-packages\\sklearn\\cluster\\_kmeans.py:1419: UserWarning:\n\nKMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=2."
   },
   {
     "objectID": "posts/another_post.html",

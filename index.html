@@ -231,8 +231,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#when-to-use" id="toc-when-to-use" class="nav-link" data-scroll-target="#when-to-use">When to use</a></li>
   <li><a href="#demo-synthetic" id="toc-demo-synthetic" class="nav-link" data-scroll-target="#demo-synthetic">Demo (synthetic)</a></li>
   </ul></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">Data</a></li>
-  <li><a href="#plot" id="toc-plot" class="nav-link" data-scroll-target="#plot">Plot</a></li>
   <li><a href="#logistic-regression-classification" id="toc-logistic-regression-classification" class="nav-link" data-scroll-target="#logistic-regression-classification">2) Logistic Regression (Classification)</a>
   <ul class="collapse">
   <li><a href="#idea-1" id="toc-idea-1" class="nav-link" data-scroll-target="#idea-1">Idea</a></li>
@@ -297,13 +295,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p><img src="images/user_image.png" class="img-fluid" alt="alt"> # Setup</p>
-<div id="0c74d70e" class="cell" data-execution_count="1">
+<div id="d49b0f2d" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hi"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>Hi</code></pre>
 </div>
 </div>
-<div id="6113bd94" class="cell" data-execution_count="2">
+<div id="a8b7f7ef" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
@@ -334,20 +332,45 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="demo-synthetic" class="level2">
 <h2 class="anchored" data-anchor-id="demo-synthetic">Demo (synthetic)</h2>
-<p><code>from sklearn.linear_model import LinearRegression from sklearn.metrics import mean_squared_error, r2_score</code></p>
+<div id="d581144d" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Data</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">7</span>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> rng.uniform(<span class="dv">0</span>, <span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">120</span>, <span class="dv">1</span>))</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fl">3.5</span><span class="op">*</span>X.squeeze() <span class="op">+</span> <span class="dv">8</span> <span class="op">+</span> rng.normal(<span class="dv">0</span>, <span class="fl">2.0</span>, size<span class="op">=</span><span class="dv">120</span>)</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearRegression()</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train)</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> model.predict(X_test)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"MSE:"</span>, mean_squared_error(y_test, pred))</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"R2 :"</span>, r2_score(y_test, pred))</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_test, y_test)</span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_test, pred)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"X"</span>)<span class="op">;</span> plt.ylabel(<span class="st">"y"</span>)</span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Linear Regression: true vs predicted"</span>)</span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>MSE: 3.4522247956202796
+R2 : 0.942791028778986</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-4-output-2.png" width="585" height="449" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-</section>
-<section id="data" class="level1">
-<h1>Data</h1>
-<p>```rng = np.random.default_rng(7) X = rng.uniform(0, 10, size=(120, 1)) y = 3.5*X.squeeze() + 8 + rng.normal(0, 2.0, size=120)</p>
-<p>X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)</p>
-<p>model = LinearRegression() model.fit(X_train, y_train) pred = model.predict(X_test)</p>
-<p>print(“MSE:”, mean_squared_error(y_test, pred)) print(“R2 :”, r2_score(y_test, pred)) ```</p>
-</section>
-<section id="plot" class="level1">
-<h1>Plot</h1>
-<p><code>plt.scatter(X_test, y_test) plt.scatter(X_test, pred) plt.xlabel("X"); plt.ylabel("y") plt.title("Linear Regression: true vs predicted") plt.show()</code></p>
-<hr>
 </section>
 <section id="logistic-regression-classification" class="level1">
 <h1>2) Logistic Regression (Classification)</h1>
@@ -364,13 +387,33 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="demo-breast-cancer-dataset" class="level2">
 <h2 class="anchored" data-anchor-id="demo-breast-cancer-dataset">Demo (Breast Cancer dataset)</h2>
-<p>```from sklearn.datasets import load_breast_cancer from sklearn.linear_model import LogisticRegression</p>
-<p>data = load_breast_cancer() X, y = data.data, data.target</p>
-<p>X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=42)</p>
-<p>clf = Pipeline([ (“scaler”, StandardScaler()), (“lr”, LogisticRegression(max_iter=5000))])</p>
-<p>clf.fit(X_train, y_train) pred = clf.predict(X_test)</p>
-<p>print(“Accuracy:”, accuracy_score(y_test, pred)) print(“F1 :”, f1_score(y_test, pred)) print(confusion_matrix(y_test, pred))```</p>
-<hr>
+<div id="d2c14c3f" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_breast_cancer</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> load_breast_cancer()</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> data.data, data.target</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, stratify<span class="op">=</span>y, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> Pipeline([</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>(<span class="st">"scaler"</span>, StandardScaler()),</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>(<span class="st">"lr"</span>, LogisticRegression(max_iter<span class="op">=</span><span class="dv">5000</span>))</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>clf.fit(X_train, y_train)</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> clf.predict(X_test)</span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Accuracy:"</span>, accuracy_score(y_test, pred))</span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"F1      :"</span>, f1_score(y_test, pred))</span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(y_test, pred))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Accuracy: 0.9824561403508771
+F1      : 0.9861111111111112
+[[41  1]
+ [ 1 71]]</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="k-nn" class="level1">
@@ -385,11 +428,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Small/medium datasets</li>
 <li>Nonlinear boundaries, simple intuition</li>
 </ul>
-<p>```from sklearn.neighbors import KNeighborsClassifier</p>
-<p>knn = Pipeline([ (“scaler”, StandardScaler()), (“knn”, KNeighborsClassifier(n_neighbors=5))])</p>
-<p>knn.fit(X_train, y_train) pred = knn.predict(X_test)</p>
-<p>print(“Accuracy:”, accuracy_score(y_test, pred)) print(classification_report(y_test, pred, target_names=data.target_names))```</p>
-<hr>
+<div id="75c8b659" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>knn <span class="op">=</span> Pipeline([</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>(<span class="st">"scaler"</span>, StandardScaler()),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>(<span class="st">"knn"</span>, KNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">5</span>))</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>knn.fit(X_train, y_train)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> knn.predict(X_test)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Accuracy:"</span>, accuracy_score(y_test, pred))</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_test, pred, target_names<span class="op">=</span>data.target_names))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Accuracy: 0.956140350877193
+              precision    recall  f1-score   support
+
+   malignant       0.95      0.93      0.94        42
+      benign       0.96      0.97      0.97        72
+
+    accuracy                           0.96       114
+   macro avg       0.96      0.95      0.95       114
+weighted avg       0.96      0.96      0.96       114
+</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="decision-tree" class="level1">
@@ -404,10 +468,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Mixed feature importance explanations</li>
 <li>Easy visualization (but can overfit)</li>
 </ul>
-<p>```from sklearn.tree import DecisionTreeClassifier</p>
-<p>tree = DecisionTreeClassifier(max_depth=4, random_state=42) tree.fit(X_train, y_train) pred = tree.predict(X_test)</p>
-<p>print(“Accuracy:”, accuracy_score(y_test, pred))```</p>
-<hr>
+<div id="5b649747" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>tree <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">4</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>tree.fit(X_train, y_train)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> tree.predict(X_test)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Accuracy:"</span>, accuracy_score(y_test, pred))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Accuracy: 0.9385964912280702</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="random-forest" class="level1">
@@ -422,11 +494,24 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Strong general-purpose model</li>
 <li>Good with tabular data</li>
 </ul>
-<p>```from sklearn.ensemble import RandomForestClassifier</p>
-<p>rf = RandomForestClassifier( n_estimators=300, max_depth=None, random_state=42, n_jobs=-1 )</p>
-<p>rf.fit(X_train, y_train) pred = rf.predict(X_test)</p>
-<p>print(“Accuracy:”, accuracy_score(y_test, pred))```</p>
-<hr>
+<div id="3c9f5aca" class="cell" data-execution_count="7">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> RandomForestClassifier(</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>n_estimators<span class="op">=</span><span class="dv">300</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>max_depth<span class="op">=</span><span class="va">None</span>,</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>random_state<span class="op">=</span><span class="dv">42</span>,</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>n_jobs<span class="op">=-</span><span class="dv">1</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>rf.fit(X_train, y_train)</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> rf.predict(X_test)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Accuracy:"</span>, accuracy_score(y_test, pred))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Accuracy: 0.9473684210526315</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="support-vector-machine-svm" class="level1">
@@ -441,11 +526,22 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Medium-sized data</li>
 <li>Strong classifier with scaling</li>
 </ul>
-<p>```from sklearn.svm import SVC</p>
-<p>svm = Pipeline([ (“scaler”, StandardScaler()), (“svc”, SVC(kernel=“rbf”, C=2.0, gamma=“scale”))])</p>
-<p>svm.fit(X_train, y_train) pred = svm.predict(X_test)</p>
-<p>print(“Accuracy:”, accuracy_score(y_test, pred))```</p>
-<hr>
+<div id="fcd97a51" class="cell" data-execution_count="8">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>svm <span class="op">=</span> Pipeline([</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>(<span class="st">"scaler"</span>, StandardScaler()),</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>(<span class="st">"svc"</span>, SVC(kernel<span class="op">=</span><span class="st">"rbf"</span>, C<span class="op">=</span><span class="fl">2.0</span>, gamma<span class="op">=</span><span class="st">"scale"</span>))</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>])</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>svm.fit(X_train, y_train)</span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> svm.predict(X_test)</span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Accuracy:"</span>, accuracy_score(y_test, pred))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Accuracy: 0.9824561403508771</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="naive-bayes" class="level1">
@@ -460,10 +556,18 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Text classification, quick baselines</li>
 <li>Very fast</li>
 </ul>
-<p>```from sklearn.naive_bayes import GaussianNB</p>
-<p>nb = GaussianNB() nb.fit(X_train, y_train) pred = nb.predict(X_test)</p>
-<p>print(“Accuracy:”, accuracy_score(y_test, pred))```</p>
-<hr>
+<div id="9f8a121b" class="cell" data-execution_count="9">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> GaussianNB</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>nb <span class="op">=</span> GaussianNB()</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>nb.fit(X_train, y_train)</span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> nb.predict(X_test)</span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Accuracy:"</span>, accuracy_score(y_test, pred))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Accuracy: 0.9385964912280702</code></pre>
+</div>
+</div>
 </section>
 </section>
 <section id="k-means-clustering" class="level1">
@@ -478,11 +582,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Market segmentation, grouping patterns</li>
 <li>Quick exploratory clustering</li>
 </ul>
-<p>```from sklearn.datasets import make_blobs from sklearn.cluster import KMeans</p>
-<p>Xc, _ = make_blobs(n_samples=300, centers=4, random_state=42, cluster_std=1.2)</p>
-<p>kmeans = KMeans(n_clusters=4, n_init=10, random_state=42) labels = kmeans.fit_predict(Xc)</p>
-<p>plt.scatter(Xc[:,0], Xc[:,1], c=labels) plt.title(“k-Means clustering”) plt.show()```</p>
-<hr>
+<div id="b3766628" class="cell" data-execution_count="10">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_blobs</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>Xc, _ <span class="op">=</span> make_blobs(n_samples<span class="op">=</span><span class="dv">300</span>, centers<span class="op">=</span><span class="dv">4</span>, random_state<span class="op">=</span><span class="dv">42</span>, cluster_std<span class="op">=</span><span class="fl">1.2</span>)</span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">4</span>, n_init<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> kmeans.fit_predict(Xc)</span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>plt.scatter(Xc[:,<span class="dv">0</span>], Xc[:,<span class="dv">1</span>], c<span class="op">=</span>labels)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"k-Means clustering"</span>)</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>C:\Users\noors\anaconda3\envs\quarto\Lib\site-packages\sklearn\cluster\_kmeans.py:1419: UserWarning:
+
+KMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=2.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="index_files/figure-html/cell-11-output-2.png" width="578" height="431" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="quick-comparison-table" class="level1">
