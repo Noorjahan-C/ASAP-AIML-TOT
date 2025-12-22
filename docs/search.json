@@ -7,13 +7,6 @@
     "text": "2024\n\nAdvanced Tools for Literate Programming and Machine Learning, August 6-7, 2024"
   },
   {
-    "objectID": "blog.html",
-    "href": "blog.html",
-    "title": "Blog",
-    "section": "",
-    "text": "Blogpost Example\n\n\n\n\n\n\nblog post\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAnother blogpost example\n\n\n\n\n\n\nblog post\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nA sample work\n\n\n\n\n\n\nblog with code\n\n\n\n\n\n\n\n\n\n\n\n\n\nNo matching items"
-  },
-  {
     "objectID": "posts/post_with_code.html",
     "href": "posts/post_with_code.html",
     "title": "A sample work",
@@ -21,10 +14,213 @@
     "text": "For a demonstration of a line plot on a polar axis, see Figure 1.\n\n\nCode\nimport numpy as np\nimport matplotlib.pyplot as plt\n\nr = np.arange(0, 2, 0.01)\ntheta = 2 * np.pi * r\nfig, ax = plt.subplots(\n  subplot_kw = {'projection': 'polar'} \n)\nax.plot(theta, r)\nax.set_rticks([0.5, 1, 1.5, 2])\nax.grid(True)\nplt.show()\n\n\n\n\n\n\n\n\nFigure 1: A line plot on a polar axis"
   },
   {
-    "objectID": "about.html",
-    "href": "about.html",
-    "title": "About",
+    "objectID": "posts/another_post.html",
+    "href": "posts/another_post.html",
+    "title": "Blogpost Example",
     "section": "",
-    "text": "I’m a second year Computer Science and Engineering student doing minor in Computational Mathematics with a passion for pushing the boundaries of knowledge in AI. With a strong background in Computer Science, my research focuses on Practive Oriented AI, aiming to contribute to meaningful advancements and solutions."
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "My Personal Webpage",
+    "section": "",
+    "text": "# Setup\nprint(\"Hi\")\n\nHi\nimport numpy as np\nimport pandas as pd\nimport matplotlib.pyplot as plt\n\nfrom sklearn.model_selection import train_test_split\nfrom sklearn.preprocessing import StandardScaler\nfrom sklearn.pipeline import Pipeline\nfrom sklearn.metrics import accuracy_score, f1_score, confusion_matrix, classification_report\n\nx=10\nprint(x)\n\n10"
+  },
+  {
+    "objectID": "index.html#idea",
+    "href": "index.html#idea",
+    "title": "My Personal Webpage",
+    "section": "Idea",
+    "text": "Idea\nPredict a continuous value using a straight-line relationship."
+  },
+  {
+    "objectID": "index.html#when-to-use",
+    "href": "index.html#when-to-use",
+    "title": "My Personal Webpage",
+    "section": "When to use",
+    "text": "When to use\n\nHouse price, marks prediction, trend estimation\nBaseline model for regression"
+  },
+  {
+    "objectID": "index.html#demo-synthetic",
+    "href": "index.html#demo-synthetic",
+    "title": "My Personal Webpage",
+    "section": "Demo (synthetic)",
+    "text": "Demo (synthetic)\n\nfrom sklearn.linear_model import LinearRegression\nfrom sklearn.metrics import mean_squared_error, r2_score\n\n# Data\n\nrng = np.random.default_rng(7)\nX = rng.uniform(0, 10, size=(120, 1))\ny = 3.5*X.squeeze() + 8 + rng.normal(0, 2.0, size=120)\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\nmodel = LinearRegression()\nmodel.fit(X_train, y_train)\npred = model.predict(X_test)\n\nprint(\"MSE:\", mean_squared_error(y_test, pred))\nprint(\"R2 :\", r2_score(y_test, pred))\n\n# Plot\n\nplt.scatter(X_test, y_test)\nplt.scatter(X_test, pred)\nplt.xlabel(\"X\"); plt.ylabel(\"y\")\nplt.title(\"Linear Regression: true vs predicted\")\nplt.show()\n\nMSE: 3.4522247956202796\nR2 : 0.942791028778986"
+  },
+  {
+    "objectID": "index.html#idea-1",
+    "href": "index.html#idea-1",
+    "title": "My Personal Webpage",
+    "section": "Idea",
+    "text": "Idea\nPredict class probability using a sigmoid; good baseline for binary/multiclass."
+  },
+  {
+    "objectID": "index.html#when-to-use-1",
+    "href": "index.html#when-to-use-1",
+    "title": "My Personal Webpage",
+    "section": "When to use",
+    "text": "When to use\n\nSpam vs not spam, disease yes/no\nHighly interpretable baseline"
+  },
+  {
+    "objectID": "index.html#demo-breast-cancer-dataset",
+    "href": "index.html#demo-breast-cancer-dataset",
+    "title": "My Personal Webpage",
+    "section": "Demo (Breast Cancer dataset)",
+    "text": "Demo (Breast Cancer dataset)\n\nfrom sklearn.datasets import load_breast_cancer\nfrom sklearn.linear_model import LogisticRegression\n\ndata = load_breast_cancer()\nX, y = data.data, data.target\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, stratify=y, random_state=42)\n\nclf = Pipeline([\n(\"scaler\", StandardScaler()),\n(\"lr\", LogisticRegression(max_iter=5000))\n])\n\nclf.fit(X_train, y_train)\npred = clf.predict(X_test)\n\nprint(\"Accuracy:\", accuracy_score(y_test, pred))\nprint(\"F1      :\", f1_score(y_test, pred))\nprint(confusion_matrix(y_test, pred))\n\nAccuracy: 0.9824561403508771\nF1      : 0.9861111111111112\n[[41  1]\n [ 1 71]]"
+  },
+  {
+    "objectID": "index.html#idea-2",
+    "href": "index.html#idea-2",
+    "title": "My Personal Webpage",
+    "section": "Idea",
+    "text": "Idea\nA point is classified by the majority label among its nearest neighbors."
+  },
+  {
+    "objectID": "index.html#when-to-use-2",
+    "href": "index.html#when-to-use-2",
+    "title": "My Personal Webpage",
+    "section": "When to use",
+    "text": "When to use\n\nSmall/medium datasets\nNonlinear boundaries, simple intuition\n\n\nfrom sklearn.neighbors import KNeighborsClassifier\n\nknn = Pipeline([\n(\"scaler\", StandardScaler()),\n(\"knn\", KNeighborsClassifier(n_neighbors=5))\n])\n\nknn.fit(X_train, y_train)\npred = knn.predict(X_test)\n\nprint(\"Accuracy:\", accuracy_score(y_test, pred))\nprint(classification_report(y_test, pred, target_names=data.target_names))\n\nAccuracy: 0.956140350877193\n              precision    recall  f1-score   support\n\n   malignant       0.95      0.93      0.94        42\n      benign       0.96      0.97      0.97        72\n\n    accuracy                           0.96       114\n   macro avg       0.96      0.95      0.95       114\nweighted avg       0.96      0.96      0.96       114"
+  },
+  {
+    "objectID": "index.html#idea-3",
+    "href": "index.html#idea-3",
+    "title": "My Personal Webpage",
+    "section": "Idea",
+    "text": "Idea\nSplit data by feature thresholds to reduce impurity (Gini/Entropy)."
+  },
+  {
+    "objectID": "index.html#when-to-use-3",
+    "href": "index.html#when-to-use-3",
+    "title": "My Personal Webpage",
+    "section": "When to use",
+    "text": "When to use\n\nMixed feature importance explanations\nEasy visualization (but can overfit)\n\n\nfrom sklearn.tree import DecisionTreeClassifier\n\ntree = DecisionTreeClassifier(max_depth=4, random_state=42)\ntree.fit(X_train, y_train)\npred = tree.predict(X_test)\n\nprint(\"Accuracy:\", accuracy_score(y_test, pred))\n\nAccuracy: 0.9385964912280702"
+  },
+  {
+    "objectID": "index.html#idea-4",
+    "href": "index.html#idea-4",
+    "title": "My Personal Webpage",
+    "section": "Idea",
+    "text": "Idea\nMany trees + bagging; reduces overfitting and improves stability."
+  },
+  {
+    "objectID": "index.html#when-to-use-4",
+    "href": "index.html#when-to-use-4",
+    "title": "My Personal Webpage",
+    "section": "When to use",
+    "text": "When to use\n\nStrong general-purpose model\nGood with tabular data\n\n\nfrom sklearn.ensemble import RandomForestClassifier\n\nrf = RandomForestClassifier(\nn_estimators=300,\nmax_depth=None,\nrandom_state=42,\nn_jobs=-1\n)\n\nrf.fit(X_train, y_train)\npred = rf.predict(X_test)\n\nprint(\"Accuracy:\", accuracy_score(y_test, pred))\n\nAccuracy: 0.9473684210526315"
+  },
+  {
+    "objectID": "index.html#idea-5",
+    "href": "index.html#idea-5",
+    "title": "My Personal Webpage",
+    "section": "Idea",
+    "text": "Idea\nFind a maximum-margin boundary; kernels allow nonlinear separation."
+  },
+  {
+    "objectID": "index.html#when-to-use-5",
+    "href": "index.html#when-to-use-5",
+    "title": "My Personal Webpage",
+    "section": "When to use",
+    "text": "When to use\n\nMedium-sized data\nStrong classifier with scaling\n\n\nfrom sklearn.svm import SVC\n\nsvm = Pipeline([\n(\"scaler\", StandardScaler()),\n(\"svc\", SVC(kernel=\"rbf\", C=2.0, gamma=\"scale\"))\n])\n\nsvm.fit(X_train, y_train)\npred = svm.predict(X_test)\n\nprint(\"Accuracy:\", accuracy_score(y_test, pred))\n\nAccuracy: 0.9824561403508771"
+  },
+  {
+    "objectID": "index.html#idea-6",
+    "href": "index.html#idea-6",
+    "title": "My Personal Webpage",
+    "section": "Idea",
+    "text": "Idea\nProbability-based classifier assuming feature independence."
+  },
+  {
+    "objectID": "index.html#when-to-use-6",
+    "href": "index.html#when-to-use-6",
+    "title": "My Personal Webpage",
+    "section": "When to use",
+    "text": "When to use\n\nText classification, quick baselines\nVery fast\n\n\nfrom sklearn.naive_bayes import GaussianNB\n\nnb = GaussianNB()\nnb.fit(X_train, y_train)\npred = nb.predict(X_test)\n\nprint(\"Accuracy:\", accuracy_score(y_test, pred))\n\nAccuracy: 0.9385964912280702"
+  },
+  {
+    "objectID": "index.html#idea-7",
+    "href": "index.html#idea-7",
+    "title": "My Personal Webpage",
+    "section": "Idea",
+    "text": "Idea\nUnsupervised grouping by minimizing distance to cluster centers."
+  },
+  {
+    "objectID": "index.html#when-to-use-7",
+    "href": "index.html#when-to-use-7",
+    "title": "My Personal Webpage",
+    "section": "When to use",
+    "text": "When to use\n\nMarket segmentation, grouping patterns\nQuick exploratory clustering\n\n\nfrom sklearn.datasets import make_blobs\nfrom sklearn.cluster import KMeans\n\nXc, _ = make_blobs(n_samples=300, centers=4, random_state=42, cluster_std=1.2)\n\nkmeans = KMeans(n_clusters=4, n_init=10, random_state=42)\nlabels = kmeans.fit_predict(Xc)\n\nplt.scatter(Xc[:,0], Xc[:,1], c=labels)\nplt.title(\"k-Means clustering\")\nplt.show()\n\nC:\\Users\\noors\\anaconda3\\envs\\quarto\\Lib\\site-packages\\sklearn\\cluster\\_kmeans.py:1419: UserWarning:\n\nKMeans is known to have a memory leak on Windows with MKL, when there are less chunks than available threads. You can avoid it by setting the environment variable OMP_NUM_THREADS=2."
+  },
+  {
+    "objectID": "posts/post.html",
+    "href": "posts/post.html",
+    "title": "Another blogpost example",
+    "section": "",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+  },
+  {
+    "objectID": "svm.html",
+    "href": "svm.html",
+    "title": "Support Vector Machines Through the Four Lenses",
+    "section": "",
+    "text": "Support Vector Machines (SVMs) are among the most powerful and mathematically elegant machine learning algorithms.\nBy examining SVM through the four foundational pillars—Linear Algebra, Statistics, Calculus, and Optimization—we uncover the deep mathematical structure that enables robust and generalizable learning.\nThis deconstruction demonstrates that even advanced AI systems are built upon a small set of fundamental mathematical principles."
+  },
+  {
+    "objectID": "svm.html#introduction",
+    "href": "svm.html#introduction",
+    "title": "Support Vector Machines Through the Four Lenses",
+    "section": "",
+    "text": "Support Vector Machines (SVMs) are among the most powerful and mathematically elegant machine learning algorithms.\nBy examining SVM through the four foundational pillars—Linear Algebra, Statistics, Calculus, and Optimization—we uncover the deep mathematical structure that enables robust and generalizable learning.\nThis deconstruction demonstrates that even advanced AI systems are built upon a small set of fundamental mathematical principles."
+  },
+  {
+    "objectID": "svm.html#the-linear-algebra-perspective",
+    "href": "svm.html#the-linear-algebra-perspective",
+    "title": "Support Vector Machines Through the Four Lenses",
+    "section": "2 The Linear Algebra Perspective",
+    "text": "2 The Linear Algebra Perspective\n\n2.1 Geometry of Separation\nFrom a linear algebra viewpoint, Support Vector Machines treat data as points in a high-dimensional vector space. Each input sample is represented as a feature vector, transforming learning into a problem of geometric separation.\nAt the core of SVM lies the concept of a hyperplane, defined by a weight vector and a bias term. This hyperplane acts as a decision boundary that separates data points belonging to different classes. Linear algebra governs how this boundary is oriented and positioned through operations such as dot products, vector norms, and projections.\nA key innovation of SVM is the margin—the distance between the hyperplane and the nearest data points from each class. These nearest points, known as support vectors, uniquely define the model. As a result, SVM decisions depend on a small subset of critical data points rather than the entire dataset.\nWhen data is not linearly separable, SVMs employ kernel functions that implicitly map data into higher-dimensional spaces, where linear separation becomes feasible. This highlights the expressive power of linear algebra in modern machine learning."
+  },
+  {
+    "objectID": "svm.html#the-statistical-foundation",
+    "href": "svm.html#the-statistical-foundation",
+    "title": "Support Vector Machines Through the Four Lenses",
+    "section": "3 The Statistical Foundation",
+    "text": "3 The Statistical Foundation\n\n3.1 Risk, Margin, and Generalization\nStatistics provides the framework for understanding what makes an SVM model effective. Unlike regression models that minimize squared error, SVMs rely on the hinge loss, which penalizes incorrect classifications and points that lie too close to the decision boundary.\nA central statistical concept in SVM is regularization, which balances two competing objectives:\n\nMaximizing the margin (model simplicity)\nMinimizing classification errors (data fit)\n\nThis balance reflects the classical bias–variance trade-off. By controlling the regularization parameter, SVMs reduce overfitting while maintaining strong predictive performance.\nRather than modeling class probabilities explicitly, SVMs are grounded in statistical learning theory and the principle of structural risk minimization, ensuring robustness even in high-dimensional feature spaces."
+  },
+  {
+    "objectID": "svm.html#the-calculus-engine",
+    "href": "svm.html#the-calculus-engine",
+    "title": "Support Vector Machines Through the Four Lenses",
+    "section": "4 The Calculus Engine",
+    "text": "4 The Calculus Engine\n\n4.1 Gradients and Constraints\nAlthough often presented geometrically, SVM training relies heavily on calculus. The learning objective is formulated as a constrained optimization problem, combining margin maximization with penalty terms for misclassification.\nCalculus enables this formulation through:\n\nGradients, which describe how the objective function changes\nLagrange multipliers, which incorporate constraints directly into the optimization process\n\nThese tools transform intuitive geometric goals into a mathematically solvable problem. Even when closed-form solvers or quadratic programming techniques are used, calculus remains the underlying engine that guarantees correctness and convergence."
+  },
+  {
+    "objectID": "svm.html#the-optimization-strategy",
+    "href": "svm.html#the-optimization-strategy",
+    "title": "Support Vector Machines Through the Four Lenses",
+    "section": "5 The Optimization Strategy",
+    "text": "5 The Optimization Strategy\n\n5.1 Finding the Maximum-Margin Solution\nOptimization unifies all previous pillars into a practical learning algorithm. The SVM objective function is convex, meaning it has a single global minimum—an essential property for stable and reliable learning.\nOptimization theory governs:\n\nHow constraints are enforced\nWhy convergence is guaranteed\nHow efficiently solutions are found\n\nModern SVM implementations rely on quadratic programming and dual optimization methods, enabling efficient training even for large-scale datasets. The final model is defined entirely by its support vectors, making SVM both computationally efficient and interpretable."
+  },
+  {
+    "objectID": "svm.html#mapping-svm-to-the-four-pillars",
+    "href": "svm.html#mapping-svm-to-the-four-pillars",
+    "title": "Support Vector Machines Through the Four Lenses",
+    "section": "6 Mapping SVM to the Four Pillars",
+    "text": "6 Mapping SVM to the Four Pillars\nSupport Vector Machines demonstrate a seamless integration of all four foundational pillars:\n\nLinear Algebra: Feature spaces, hyperplanes, margins, kernels\n\nStatistics: Generalization, regularization, risk minimization\n\nCalculus: Gradients, constrained optimization, Lagrangians\n\nOptimization: Convex solvers, convergence, efficiency\n\nThis unified view reveals SVM as a mathematically disciplined system rather than a black-box classifier."
+  },
+  {
+    "objectID": "svm.html#curriculum-alignment",
+    "href": "svm.html#curriculum-alignment",
+    "title": "Support Vector Machines Through the Four Lenses",
+    "section": "7 Curriculum Alignment",
+    "text": "7 Curriculum Alignment\n\n7.1 Core Machine Learning\nSupport Vector Machines act as a bridge between simple linear models and advanced classifiers, drawing equally from all four pillars.\n\n\n7.2 Deep Learning\nConcepts such as margins, regularization, and optimization directly influence modern neural network training and loss design.\n\n\n7.3 Bayesian and Statistical Learning\nAlthough SVMs are not probabilistic, their grounding in statistical learning theory provides a strong contrast to Bayesian approaches.\n\n\n7.4 Optimization Theory and Deployment\nKernel selection, solver efficiency, and scalability highlight real-world optimization challenges encountered in AI systems."
+  },
+  {
+    "objectID": "svm.html#key-takeaway",
+    "href": "svm.html#key-takeaway",
+    "title": "Support Vector Machines Through the Four Lenses",
+    "section": "8 Key Takeaway",
+    "text": "8 Key Takeaway\nSupport Vector Machines demonstrate that intelligence emerges from the disciplined interaction of mathematics.\nBy analyzing SVM through the four lenses, we uncover the same foundational structure that underpins both classical machine learning algorithms and modern AI systems."
   }
 ]

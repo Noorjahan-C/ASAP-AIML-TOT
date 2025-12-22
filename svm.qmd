@@ -1,0 +1,117 @@
+---
+title: "Support Vector Machines Through the Four Lenses"
+subtitle: "Deconstructing Intelligence Using Mathematical Foundations"
+author: "Noorjahan Chorath"
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    theme: cosmo
+execute:
+  echo: false
+---
+
+## Introduction
+
+Support Vector Machines (SVMs) are among the most powerful and mathematically elegant machine learning algorithms.  
+By examining SVM through the four foundational pillars—**Linear Algebra, Statistics, Calculus, and Optimization**—we uncover the deep mathematical structure that enables robust and generalizable learning.
+
+This deconstruction demonstrates that even advanced AI systems are built upon a small set of fundamental mathematical principles.
+
+---
+
+## The Linear Algebra Perspective  
+### *Geometry of Separation*
+
+From a linear algebra viewpoint, Support Vector Machines treat data as **points in a high-dimensional vector space**. Each input sample is represented as a feature vector, transforming learning into a problem of **geometric separation**.
+
+At the core of SVM lies the concept of a **hyperplane**, defined by a weight vector and a bias term. This hyperplane acts as a decision boundary that separates data points belonging to different classes. Linear algebra governs how this boundary is oriented and positioned through operations such as dot products, vector norms, and projections.
+
+A key innovation of SVM is the **margin**—the distance between the hyperplane and the nearest data points from each class. These nearest points, known as **support vectors**, uniquely define the model. As a result, SVM decisions depend on a small subset of critical data points rather than the entire dataset.
+
+When data is not linearly separable, SVMs employ **kernel functions** that implicitly map data into higher-dimensional spaces, where linear separation becomes feasible. This highlights the expressive power of linear algebra in modern machine learning.
+
+---
+
+## The Statistical Foundation  
+### *Risk, Margin, and Generalization*
+
+Statistics provides the framework for understanding what makes an SVM model effective. Unlike regression models that minimize squared error, SVMs rely on the **hinge loss**, which penalizes incorrect classifications and points that lie too close to the decision boundary.
+
+A central statistical concept in SVM is **regularization**, which balances two competing objectives:
+
+- Maximizing the margin (model simplicity)
+- Minimizing classification errors (data fit)
+
+This balance reflects the classical **bias–variance trade-off**. By controlling the regularization parameter, SVMs reduce overfitting while maintaining strong predictive performance.
+
+Rather than modeling class probabilities explicitly, SVMs are grounded in **statistical learning theory** and the principle of **structural risk minimization**, ensuring robustness even in high-dimensional feature spaces.
+
+---
+
+## The Calculus Engine  
+### *Gradients and Constraints*
+
+Although often presented geometrically, SVM training relies heavily on calculus. The learning objective is formulated as a constrained optimization problem, combining margin maximization with penalty terms for misclassification.
+
+Calculus enables this formulation through:
+
+- **Gradients**, which describe how the objective function changes
+- **Lagrange multipliers**, which incorporate constraints directly into the optimization process
+
+These tools transform intuitive geometric goals into a mathematically solvable problem. Even when closed-form solvers or quadratic programming techniques are used, calculus remains the underlying engine that guarantees correctness and convergence.
+
+---
+
+## The Optimization Strategy  
+### *Finding the Maximum-Margin Solution*
+
+Optimization unifies all previous pillars into a practical learning algorithm. The SVM objective function is **convex**, meaning it has a single global minimum—an essential property for stable and reliable learning.
+
+Optimization theory governs:
+
+- How constraints are enforced
+- Why convergence is guaranteed
+- How efficiently solutions are found
+
+Modern SVM implementations rely on **quadratic programming** and **dual optimization** methods, enabling efficient training even for large-scale datasets. The final model is defined entirely by its support vectors, making SVM both computationally efficient and interpretable.
+
+---
+
+## Mapping SVM to the Four Pillars
+
+Support Vector Machines demonstrate a seamless integration of all four foundational pillars:
+
+- **Linear Algebra**: Feature spaces, hyperplanes, margins, kernels  
+- **Statistics**: Generalization, regularization, risk minimization  
+- **Calculus**: Gradients, constrained optimization, Lagrangians  
+- **Optimization**: Convex solvers, convergence, efficiency  
+
+This unified view reveals SVM as a mathematically disciplined system rather than a black-box classifier.
+
+---
+
+## Curriculum Alignment
+
+### Core Machine Learning
+Support Vector Machines act as a bridge between simple linear models and advanced classifiers, drawing equally from all four pillars.
+
+### Deep Learning
+Concepts such as margins, regularization, and optimization directly influence modern neural network training and loss design.
+
+### Bayesian and Statistical Learning
+Although SVMs are not probabilistic, their grounding in statistical learning theory provides a strong contrast to Bayesian approaches.
+
+### Optimization Theory and Deployment
+Kernel selection, solver efficiency, and scalability highlight real-world optimization challenges encountered in AI systems.
+
+---
+
+## Key Takeaway
+
+Support Vector Machines demonstrate that **intelligence emerges from the disciplined interaction of mathematics**.  
+By analyzing SVM through the four lenses, we uncover the same foundational structure that underpins both classical machine learning algorithms and modern AI systems.
+
+---
+

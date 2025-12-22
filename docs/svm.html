@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Noorjahan Chorath">
 
-<title>Workshops Attended – A Journey Within M</title>
+<title>Support Vector Machines Through the Four Lenses – A Journey Within M</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -99,7 +100,7 @@ ul.task-list li input[type="checkbox"] {
 <span class="menu-text">Papers</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./workshops.html" aria-current="page"> 
+    <a class="nav-link" href="./workshops.html"> 
 <span class="menu-text">Workshops</span></a>
   </li>  
   <li class="nav-item">
@@ -122,7 +123,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Workshops Attended</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Support Vector Machines Through the Four Lenses</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -190,7 +191,32 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section">2024</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
+  <li><a href="#the-linear-algebra-perspective" id="toc-the-linear-algebra-perspective" class="nav-link" data-scroll-target="#the-linear-algebra-perspective"><span class="header-section-number">2</span> The Linear Algebra Perspective</a>
+  <ul class="collapse">
+  <li><a href="#geometry-of-separation" id="toc-geometry-of-separation" class="nav-link" data-scroll-target="#geometry-of-separation"><span class="header-section-number">2.1</span> <em>Geometry of Separation</em></a></li>
+  </ul></li>
+  <li><a href="#the-statistical-foundation" id="toc-the-statistical-foundation" class="nav-link" data-scroll-target="#the-statistical-foundation"><span class="header-section-number">3</span> The Statistical Foundation</a>
+  <ul class="collapse">
+  <li><a href="#risk-margin-and-generalization" id="toc-risk-margin-and-generalization" class="nav-link" data-scroll-target="#risk-margin-and-generalization"><span class="header-section-number">3.1</span> <em>Risk, Margin, and Generalization</em></a></li>
+  </ul></li>
+  <li><a href="#the-calculus-engine" id="toc-the-calculus-engine" class="nav-link" data-scroll-target="#the-calculus-engine"><span class="header-section-number">4</span> The Calculus Engine</a>
+  <ul class="collapse">
+  <li><a href="#gradients-and-constraints" id="toc-gradients-and-constraints" class="nav-link" data-scroll-target="#gradients-and-constraints"><span class="header-section-number">4.1</span> <em>Gradients and Constraints</em></a></li>
+  </ul></li>
+  <li><a href="#the-optimization-strategy" id="toc-the-optimization-strategy" class="nav-link" data-scroll-target="#the-optimization-strategy"><span class="header-section-number">5</span> The Optimization Strategy</a>
+  <ul class="collapse">
+  <li><a href="#finding-the-maximum-margin-solution" id="toc-finding-the-maximum-margin-solution" class="nav-link" data-scroll-target="#finding-the-maximum-margin-solution"><span class="header-section-number">5.1</span> <em>Finding the Maximum-Margin Solution</em></a></li>
+  </ul></li>
+  <li><a href="#mapping-svm-to-the-four-pillars" id="toc-mapping-svm-to-the-four-pillars" class="nav-link" data-scroll-target="#mapping-svm-to-the-four-pillars"><span class="header-section-number">6</span> Mapping SVM to the Four Pillars</a></li>
+  <li><a href="#curriculum-alignment" id="toc-curriculum-alignment" class="nav-link" data-scroll-target="#curriculum-alignment"><span class="header-section-number">7</span> Curriculum Alignment</a>
+  <ul class="collapse">
+  <li><a href="#core-machine-learning" id="toc-core-machine-learning" class="nav-link" data-scroll-target="#core-machine-learning"><span class="header-section-number">7.1</span> Core Machine Learning</a></li>
+  <li><a href="#deep-learning" id="toc-deep-learning" class="nav-link" data-scroll-target="#deep-learning"><span class="header-section-number">7.2</span> Deep Learning</a></li>
+  <li><a href="#bayesian-and-statistical-learning" id="toc-bayesian-and-statistical-learning" class="nav-link" data-scroll-target="#bayesian-and-statistical-learning"><span class="header-section-number">7.3</span> Bayesian and Statistical Learning</a></li>
+  <li><a href="#optimization-theory-and-deployment" id="toc-optimization-theory-and-deployment" class="nav-link" data-scroll-target="#optimization-theory-and-deployment"><span class="header-section-number">7.4</span> Optimization Theory and Deployment</a></li>
+  </ul></li>
+  <li><a href="#key-takeaway" id="toc-key-takeaway" class="nav-link" data-scroll-target="#key-takeaway"><span class="header-section-number">8</span> Key Takeaway</a></li>
   </ul>
 </nav>
     </div>
@@ -199,13 +225,20 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Workshops Attended</h1>
+<h1 class="title">Support Vector Machines Through the Four Lenses</h1>
+<p class="subtitle lead">Deconstructing Intelligence Using Mathematical Foundations</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Noorjahan Chorath </p>
+          </div>
+  </div>
     
   
     
@@ -216,11 +249,108 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="section" class="level3">
-<h3 class="anchored" data-anchor-id="section">2024</h3>
+<section id="introduction" class="level2" data-number="1">
+<h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
+<p>Support Vector Machines (SVMs) are among the most powerful and mathematically elegant machine learning algorithms.<br>
+By examining SVM through the four foundational pillars—<strong>Linear Algebra, Statistics, Calculus, and Optimization</strong>—we uncover the deep mathematical structure that enables robust and generalizable learning.</p>
+<p>This deconstruction demonstrates that even advanced AI systems are built upon a small set of fundamental mathematical principles.</p>
+<hr>
+</section>
+<section id="the-linear-algebra-perspective" class="level2" data-number="2">
+<h2 data-number="2" class="anchored" data-anchor-id="the-linear-algebra-perspective"><span class="header-section-number">2</span> The Linear Algebra Perspective</h2>
+<section id="geometry-of-separation" class="level3" data-number="2.1">
+<h3 data-number="2.1" class="anchored" data-anchor-id="geometry-of-separation"><span class="header-section-number">2.1</span> <em>Geometry of Separation</em></h3>
+<p>From a linear algebra viewpoint, Support Vector Machines treat data as <strong>points in a high-dimensional vector space</strong>. Each input sample is represented as a feature vector, transforming learning into a problem of <strong>geometric separation</strong>.</p>
+<p>At the core of SVM lies the concept of a <strong>hyperplane</strong>, defined by a weight vector and a bias term. This hyperplane acts as a decision boundary that separates data points belonging to different classes. Linear algebra governs how this boundary is oriented and positioned through operations such as dot products, vector norms, and projections.</p>
+<p>A key innovation of SVM is the <strong>margin</strong>—the distance between the hyperplane and the nearest data points from each class. These nearest points, known as <strong>support vectors</strong>, uniquely define the model. As a result, SVM decisions depend on a small subset of critical data points rather than the entire dataset.</p>
+<p>When data is not linearly separable, SVMs employ <strong>kernel functions</strong> that implicitly map data into higher-dimensional spaces, where linear separation becomes feasible. This highlights the expressive power of linear algebra in modern machine learning.</p>
+<hr>
+</section>
+</section>
+<section id="the-statistical-foundation" class="level2" data-number="3">
+<h2 data-number="3" class="anchored" data-anchor-id="the-statistical-foundation"><span class="header-section-number">3</span> The Statistical Foundation</h2>
+<section id="risk-margin-and-generalization" class="level3" data-number="3.1">
+<h3 data-number="3.1" class="anchored" data-anchor-id="risk-margin-and-generalization"><span class="header-section-number">3.1</span> <em>Risk, Margin, and Generalization</em></h3>
+<p>Statistics provides the framework for understanding what makes an SVM model effective. Unlike regression models that minimize squared error, SVMs rely on the <strong>hinge loss</strong>, which penalizes incorrect classifications and points that lie too close to the decision boundary.</p>
+<p>A central statistical concept in SVM is <strong>regularization</strong>, which balances two competing objectives:</p>
 <ul>
-<li><code>Advanced Tools for Literate Programming and Machine Learning</code>, August 6-7, 2024</li>
+<li>Maximizing the margin (model simplicity)</li>
+<li>Minimizing classification errors (data fit)</li>
 </ul>
+<p>This balance reflects the classical <strong>bias–variance trade-off</strong>. By controlling the regularization parameter, SVMs reduce overfitting while maintaining strong predictive performance.</p>
+<p>Rather than modeling class probabilities explicitly, SVMs are grounded in <strong>statistical learning theory</strong> and the principle of <strong>structural risk minimization</strong>, ensuring robustness even in high-dimensional feature spaces.</p>
+<hr>
+</section>
+</section>
+<section id="the-calculus-engine" class="level2" data-number="4">
+<h2 data-number="4" class="anchored" data-anchor-id="the-calculus-engine"><span class="header-section-number">4</span> The Calculus Engine</h2>
+<section id="gradients-and-constraints" class="level3" data-number="4.1">
+<h3 data-number="4.1" class="anchored" data-anchor-id="gradients-and-constraints"><span class="header-section-number">4.1</span> <em>Gradients and Constraints</em></h3>
+<p>Although often presented geometrically, SVM training relies heavily on calculus. The learning objective is formulated as a constrained optimization problem, combining margin maximization with penalty terms for misclassification.</p>
+<p>Calculus enables this formulation through:</p>
+<ul>
+<li><strong>Gradients</strong>, which describe how the objective function changes</li>
+<li><strong>Lagrange multipliers</strong>, which incorporate constraints directly into the optimization process</li>
+</ul>
+<p>These tools transform intuitive geometric goals into a mathematically solvable problem. Even when closed-form solvers or quadratic programming techniques are used, calculus remains the underlying engine that guarantees correctness and convergence.</p>
+<hr>
+</section>
+</section>
+<section id="the-optimization-strategy" class="level2" data-number="5">
+<h2 data-number="5" class="anchored" data-anchor-id="the-optimization-strategy"><span class="header-section-number">5</span> The Optimization Strategy</h2>
+<section id="finding-the-maximum-margin-solution" class="level3" data-number="5.1">
+<h3 data-number="5.1" class="anchored" data-anchor-id="finding-the-maximum-margin-solution"><span class="header-section-number">5.1</span> <em>Finding the Maximum-Margin Solution</em></h3>
+<p>Optimization unifies all previous pillars into a practical learning algorithm. The SVM objective function is <strong>convex</strong>, meaning it has a single global minimum—an essential property for stable and reliable learning.</p>
+<p>Optimization theory governs:</p>
+<ul>
+<li>How constraints are enforced</li>
+<li>Why convergence is guaranteed</li>
+<li>How efficiently solutions are found</li>
+</ul>
+<p>Modern SVM implementations rely on <strong>quadratic programming</strong> and <strong>dual optimization</strong> methods, enabling efficient training even for large-scale datasets. The final model is defined entirely by its support vectors, making SVM both computationally efficient and interpretable.</p>
+<hr>
+</section>
+</section>
+<section id="mapping-svm-to-the-four-pillars" class="level2" data-number="6">
+<h2 data-number="6" class="anchored" data-anchor-id="mapping-svm-to-the-four-pillars"><span class="header-section-number">6</span> Mapping SVM to the Four Pillars</h2>
+<p>Support Vector Machines demonstrate a seamless integration of all four foundational pillars:</p>
+<ul>
+<li><strong>Linear Algebra</strong>: Feature spaces, hyperplanes, margins, kernels<br>
+</li>
+<li><strong>Statistics</strong>: Generalization, regularization, risk minimization<br>
+</li>
+<li><strong>Calculus</strong>: Gradients, constrained optimization, Lagrangians<br>
+</li>
+<li><strong>Optimization</strong>: Convex solvers, convergence, efficiency</li>
+</ul>
+<p>This unified view reveals SVM as a mathematically disciplined system rather than a black-box classifier.</p>
+<hr>
+</section>
+<section id="curriculum-alignment" class="level2" data-number="7">
+<h2 data-number="7" class="anchored" data-anchor-id="curriculum-alignment"><span class="header-section-number">7</span> Curriculum Alignment</h2>
+<section id="core-machine-learning" class="level3" data-number="7.1">
+<h3 data-number="7.1" class="anchored" data-anchor-id="core-machine-learning"><span class="header-section-number">7.1</span> Core Machine Learning</h3>
+<p>Support Vector Machines act as a bridge between simple linear models and advanced classifiers, drawing equally from all four pillars.</p>
+</section>
+<section id="deep-learning" class="level3" data-number="7.2">
+<h3 data-number="7.2" class="anchored" data-anchor-id="deep-learning"><span class="header-section-number">7.2</span> Deep Learning</h3>
+<p>Concepts such as margins, regularization, and optimization directly influence modern neural network training and loss design.</p>
+</section>
+<section id="bayesian-and-statistical-learning" class="level3" data-number="7.3">
+<h3 data-number="7.3" class="anchored" data-anchor-id="bayesian-and-statistical-learning"><span class="header-section-number">7.3</span> Bayesian and Statistical Learning</h3>
+<p>Although SVMs are not probabilistic, their grounding in statistical learning theory provides a strong contrast to Bayesian approaches.</p>
+</section>
+<section id="optimization-theory-and-deployment" class="level3" data-number="7.4">
+<h3 data-number="7.4" class="anchored" data-anchor-id="optimization-theory-and-deployment"><span class="header-section-number">7.4</span> Optimization Theory and Deployment</h3>
+<p>Kernel selection, solver efficiency, and scalability highlight real-world optimization challenges encountered in AI systems.</p>
+<hr>
+</section>
+</section>
+<section id="key-takeaway" class="level2" data-number="8">
+<h2 data-number="8" class="anchored" data-anchor-id="key-takeaway"><span class="header-section-number">8</span> Key Takeaway</h2>
+<p>Support Vector Machines demonstrate that <strong>intelligence emerges from the disciplined interaction of mathematics</strong>.<br>
+By analyzing SVM through the four lenses, we uncover the same foundational structure that underpins both classical machine learning algorithms and modern AI systems.</p>
+<hr>
 
 
 </section>
