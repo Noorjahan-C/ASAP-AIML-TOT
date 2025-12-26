@@ -1,2 +1,2 @@
 # ASAP TRAINING
-## SESSIN 1
+## Assignment 1: SVM_4_Pillars.ipynb
