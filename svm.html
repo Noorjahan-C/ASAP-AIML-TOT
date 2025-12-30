@@ -132,6 +132,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./svm.html" aria-current="page"> 
+<span class="menu-text">SVM</span></a>
+  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -333,7 +337,7 @@ SVM aims to find a hyperplane:</p>
 <p>Optimization theory provides the framework that makes SVMs both efficient and reliable. The SVM training problem is formulated as a convex optimization problem, meaning it has a single global optimum and no local minima.</p>
 <p>This convexity guarantees that optimization algorithms converge to the best possible solution. Depending on the formulation, SVMs can be solved using quadratic programming, dual optimization, or gradient-based methods.</p>
 <p>Optimization principles guide critical design choices, such as selecting regularization parameters, choosing appropriate kernels, and determining convergence criteria. These choices ensure that training is computationally efficient while maintaining high predictive performance.</p>
-<div id="10479b76" class="cell" data-execution_count="1">
+<div id="2f11e0e8" class="cell" data-execution_count="1">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets</span>
@@ -343,7 +347,7 @@ SVM aims to find a hyperplane:</p>
 </div>
 <p>This cell imports all the required Python libraries: - <strong>NumPy</strong> for numerical computations - <strong>Matplotlib</strong> for visualization - <strong>scikit-learn</strong> for dataset loading, model building, and evaluation</p>
 <p><code>SVC</code> is the Support Vector Classifier used to implement SVM models.</p>
-<div id="14e8ed82" class="cell" data-execution_count="2">
+<div id="23214e9f" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Iris dataset</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> datasets.load_iris()</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> iris.data[:, :<span class="dv">2</span>]  <span class="co"># Select first two features for visualization</span></span>
@@ -364,7 +368,7 @@ SVM aims to find a hyperplane:</p>
 <section id="training-a-linear-svm" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="training-a-linear-svm"><span class="header-section-number">1.2</span> Training a Linear SVM</h2>
 <p>We begin with a linear kernel, which attempts to separate the classes using a straight-line decision boundary.</p>
-<div id="66bd036b" class="cell" data-execution_count="3">
+<div id="cbcdf811" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>svm_linear <span class="op">=</span> SVC(kernel<span class="op">=</span><span class="st">'linear'</span>, C<span class="op">=</span><span class="fl">1.0</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>svm_linear.fit(X_train, y_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-display" data-execution_count="3">
@@ -989,7 +993,7 @@ document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
 <li><strong>C:</strong> Regularization parameter controlling margin vs misclassification</li>
 </ul>
 <p>We begin with this simplest form of SVM to build intuition.</p>
-<div id="11aa2770" class="cell" data-execution_count="4">
+<div id="d5eb7679" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> svm_linear.predict(X_test)</span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Accuracy:"</span>, accuracy_score(y_test, y_pred))</span>
@@ -1031,7 +1035,7 @@ weighted avg       1.00      1.00      1.00        30
 <blockquote class="blockquote">
 <p>📐 Only a few critical points — <strong>support vectors</strong> — define the boundary.</p>
 </blockquote>
-<div id="b1a0dd5e" class="cell" data-execution_count="5">
+<div id="1ccb1ed7" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_decision_boundary(model, X, y):</span>
 <span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> <span class="fl">0.02</span></span>
 <span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    x_min, x_max <span class="op">=</span> X[:, <span class="dv">0</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">1</span>, X[:, <span class="dv">0</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span></span>
@@ -1061,7 +1065,7 @@ weighted avg       1.00      1.00      1.00        30
 </div>
 <p>This function: - Creates a grid over the feature space - Predicts class labels for each grid point - Visualizes the <strong>decision boundary</strong> and training samples</p>
 <p>This demonstrates how SVM constructs a separating hyperplane based on support vectors.</p>
-<div id="abcfdf66" class="cell" data-execution_count="6">
+<div id="e0717558" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>svm_rbf <span class="op">=</span> SVC(kernel<span class="op">=</span><span class="st">'rbf'</span>, C<span class="op">=</span><span class="fl">1.0</span>, gamma<span class="op">=</span><span class="st">'scale'</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>svm_rbf.fit(X_train, y_train)</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
