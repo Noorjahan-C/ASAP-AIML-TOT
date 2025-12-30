@@ -6,9 +6,8 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="Noorjahan Chorath">
 
-<title>Support Vector Machines Through the Four Lenses – A Journey Within M</title>
+<title>SVM Through the Four Lenses – A Journey Within M</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -21,10 +20,45 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" integrity="sha384-ZvpUoO/+PpLXR1lu4jmpXWu80pZlYUAfxl5NsBMWOEPSjUn/6Z/hRTt8+pR6L4N2" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
 <script src="site_libs/quarto-nav/headroom.min.js"></script>
 <script src="site_libs/clipboard/clipboard.min.js"></script>
 <script src="site_libs/quarto-search/autocomplete.umd.js"></script>
@@ -69,6 +103,9 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script src="https://cdn.jsdelivr.net/npm/requirejs@2.3.6/require.min.js" integrity="sha384-c9c+LnTbwQ3aujuU7ULEPVvgLs+Fn6fJUvIGTsuu1ZcCf11fiEubah0ttpca4ntM sha384-6V1/AdqZRWk1KAlWbKBlGhN7VG4iE/yAZcO6NZPMF8od0vukrvr0tg4qY6NSrItx" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
 
 
 <link rel="stylesheet" href="styles.css">
@@ -95,23 +132,6 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="./index.html"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./papers.qmd"> 
-<span class="menu-text">Papers</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./workshops.html"> 
-<span class="menu-text">Workshops</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./blog.qmd"> 
-<span class="menu-text">Blog</span></a>
-  </li>  
-  <li class="nav-item">
-    <span class="nav-link">
-<span class="menu-text">about.qmd</span>
-    </span>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -123,7 +143,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Support Vector Machines Through the Four Lenses</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">SVM Through the Four Lenses</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -191,32 +211,34 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
-  <li><a href="#the-linear-algebra-perspective" id="toc-the-linear-algebra-perspective" class="nav-link" data-scroll-target="#the-linear-algebra-perspective"><span class="header-section-number">2</span> The Linear Algebra Perspective</a>
+  <li><a href="#support-vector-machines-svm-theory-and-python-implementation" id="toc-support-vector-machines-svm-theory-and-python-implementation" class="nav-link active" data-scroll-target="#support-vector-machines-svm-theory-and-python-implementation"><span class="header-section-number">1</span> 🧠 Support Vector Machines (SVM): Theory and Python Implementation</a>
   <ul class="collapse">
-  <li><a href="#geometry-of-separation" id="toc-geometry-of-separation" class="nav-link" data-scroll-target="#geometry-of-separation"><span class="header-section-number">2.1</span> <em>Geometry of Separation</em></a></li>
-  </ul></li>
-  <li><a href="#the-statistical-foundation" id="toc-the-statistical-foundation" class="nav-link" data-scroll-target="#the-statistical-foundation"><span class="header-section-number">3</span> The Statistical Foundation</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction"><span class="header-section-number">1.0.1</span> <strong>Introduction</strong></a></li>
+  <li><a href="#what-this-notebook-covers" id="toc-what-this-notebook-covers" class="nav-link" data-scroll-target="#what-this-notebook-covers"><span class="header-section-number">1.0.2</span> 🔍 What this notebook covers</a></li>
+  <li><a href="#mathematical-foundations-of-svm" id="toc-mathematical-foundations-of-svm" class="nav-link" data-scroll-target="#mathematical-foundations-of-svm"><span class="header-section-number">1.1</span> 🧩 Mathematical Foundations of SVM</a>
   <ul class="collapse">
-  <li><a href="#risk-margin-and-generalization" id="toc-risk-margin-and-generalization" class="nav-link" data-scroll-target="#risk-margin-and-generalization"><span class="header-section-number">3.1</span> <em>Risk, Margin, and Generalization</em></a></li>
+  <li><a href="#linear-algebra-perspective" id="toc-linear-algebra-perspective" class="nav-link" data-scroll-target="#linear-algebra-perspective"><span class="header-section-number">1.1.1</span> 🧮 Linear Algebra Perspective</a></li>
+  <li><a href="#statistical-perspective" id="toc-statistical-perspective" class="nav-link" data-scroll-target="#statistical-perspective"><span class="header-section-number">1.1.2</span> 📊 Statistical Perspective</a></li>
+  <li><a href="#calculus-perspective" id="toc-calculus-perspective" class="nav-link" data-scroll-target="#calculus-perspective"><span class="header-section-number">1.1.3</span> 📐 Calculus Perspective</a></li>
+  <li><a href="#optimization-perspective" id="toc-optimization-perspective" class="nav-link" data-scroll-target="#optimization-perspective"><span class="header-section-number">1.1.4</span> ⚙️ Optimization Perspective</a></li>
   </ul></li>
-  <li><a href="#the-calculus-engine" id="toc-the-calculus-engine" class="nav-link" data-scroll-target="#the-calculus-engine"><span class="header-section-number">4</span> The Calculus Engine</a>
+  <li><a href="#training-a-linear-svm" id="toc-training-a-linear-svm" class="nav-link" data-scroll-target="#training-a-linear-svm"><span class="header-section-number">1.2</span> Training a Linear SVM</a></li>
+  <li><a href="#training-a-linear-svm-1" id="toc-training-a-linear-svm-1" class="nav-link" data-scroll-target="#training-a-linear-svm-1"><span class="header-section-number">1.3</span> 📈 Training a Linear SVM</a>
   <ul class="collapse">
-  <li><a href="#gradients-and-constraints" id="toc-gradients-and-constraints" class="nav-link" data-scroll-target="#gradients-and-constraints"><span class="header-section-number">4.1</span> <em>Gradients and Constraints</em></a></li>
+  <li><a href="#key-parameters" id="toc-key-parameters" class="nav-link" data-scroll-target="#key-parameters"><span class="header-section-number">1.3.1</span> 🔧 Key Parameters</a></li>
+  <li><a href="#model-evaluation" id="toc-model-evaluation" class="nav-link" data-scroll-target="#model-evaluation"><span class="header-section-number">1.3.2</span> 📊 Model Evaluation</a></li>
   </ul></li>
-  <li><a href="#the-optimization-strategy" id="toc-the-optimization-strategy" class="nav-link" data-scroll-target="#the-optimization-strategy"><span class="header-section-number">5</span> The Optimization Strategy</a>
+  <li><a href="#visualizing-the-decision-boundary" id="toc-visualizing-the-decision-boundary" class="nav-link" data-scroll-target="#visualizing-the-decision-boundary"><span class="header-section-number">1.4</span> 🖼️ Visualizing the Decision Boundary</a>
   <ul class="collapse">
-  <li><a href="#finding-the-maximum-margin-solution" id="toc-finding-the-maximum-margin-solution" class="nav-link" data-scroll-target="#finding-the-maximum-margin-solution"><span class="header-section-number">5.1</span> <em>Finding the Maximum-Margin Solution</em></a></li>
+  <li><a href="#what-we-observe" id="toc-what-we-observe" class="nav-link" data-scroll-target="#what-we-observe"><span class="header-section-number">1.4.1</span> What we observe:</a></li>
   </ul></li>
-  <li><a href="#mapping-svm-to-the-four-pillars" id="toc-mapping-svm-to-the-four-pillars" class="nav-link" data-scroll-target="#mapping-svm-to-the-four-pillars"><span class="header-section-number">6</span> Mapping SVM to the Four Pillars</a></li>
-  <li><a href="#curriculum-alignment" id="toc-curriculum-alignment" class="nav-link" data-scroll-target="#curriculum-alignment"><span class="header-section-number">7</span> Curriculum Alignment</a>
+  <li><a href="#kernel-svm-rbf-kernel" id="toc-kernel-svm-rbf-kernel" class="nav-link" data-scroll-target="#kernel-svm-rbf-kernel"><span class="header-section-number">1.5</span> 🌐 Kernel SVM (RBF Kernel)</a>
   <ul class="collapse">
-  <li><a href="#core-machine-learning" id="toc-core-machine-learning" class="nav-link" data-scroll-target="#core-machine-learning"><span class="header-section-number">7.1</span> Core Machine Learning</a></li>
-  <li><a href="#deep-learning" id="toc-deep-learning" class="nav-link" data-scroll-target="#deep-learning"><span class="header-section-number">7.2</span> Deep Learning</a></li>
-  <li><a href="#bayesian-and-statistical-learning" id="toc-bayesian-and-statistical-learning" class="nav-link" data-scroll-target="#bayesian-and-statistical-learning"><span class="header-section-number">7.3</span> Bayesian and Statistical Learning</a></li>
-  <li><a href="#optimization-theory-and-deployment" id="toc-optimization-theory-and-deployment" class="nav-link" data-scroll-target="#optimization-theory-and-deployment"><span class="header-section-number">7.4</span> Optimization Theory and Deployment</a></li>
+  <li><a href="#rbf-kernel-highlights" id="toc-rbf-kernel-highlights" class="nav-link" data-scroll-target="#rbf-kernel-highlights"><span class="header-section-number">1.5.1</span> 🌀 RBF Kernel Highlights</a></li>
   </ul></li>
-  <li><a href="#key-takeaway" id="toc-key-takeaway" class="nav-link" data-scroll-target="#key-takeaway"><span class="header-section-number">8</span> Key Takeaway</a></li>
+  <li><a href="#interpretation-of-results" id="toc-interpretation-of-results" class="nav-link" data-scroll-target="#interpretation-of-results"><span class="header-section-number">1.6</span> 🧠 Interpretation of Results</a></li>
+  <li><a href="#conclusion" id="toc-conclusion" class="nav-link" data-scroll-target="#conclusion"><span class="header-section-number">1.7</span> ✅ Conclusion</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -225,20 +247,13 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Support Vector Machines Through the Four Lenses</h1>
-<p class="subtitle lead">Deconstructing Intelligence Using Mathematical Foundations</p>
+<h1 class="title">SVM Through the Four Lenses</h1>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Author</div>
-    <div class="quarto-title-meta-contents">
-             <p>Noorjahan Chorath </p>
-          </div>
-  </div>
     
   
     
@@ -249,110 +264,855 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="introduction" class="level2" data-number="1">
-<h2 data-number="1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1</span> Introduction</h2>
-<p>Support Vector Machines (SVMs) are among the most powerful and mathematically elegant machine learning algorithms.<br>
-By examining SVM through the four foundational pillars—<strong>Linear Algebra, Statistics, Calculus, and Optimization</strong>—we uncover the deep mathematical structure that enables robust and generalizable learning.</p>
-<p>This deconstruction demonstrates that even advanced AI systems are built upon a small set of fundamental mathematical principles.</p>
+<section id="support-vector-machines-svm-theory-and-python-implementation" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 🧠 Support Vector Machines (SVM): Theory and Python Implementation</h1>
+<p><strong>Author:</strong> Noorjahan<br>
+<strong>Domain:</strong> Machine Learning Foundations<br>
+<strong>Algorithm:</strong> Support Vector Machines (SVM)</p>
 <hr>
+<blockquote class="blockquote">
+<p>📌 <strong>Objective</strong><br>
+This notebook provides a <strong>conceptual and practical walkthrough</strong> of Support Vector Machines, integrating mathematical intuition with hands-on Python implementation.</p>
+</blockquote>
+<section id="introduction" class="level3" data-number="1.0.1">
+<h3 data-number="1.0.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">1.0.1</span> <strong>Introduction</strong></h3>
+<p>Support Vector Machines (SVMs) are supervised learning algorithms used for classification and regression.<br>
+They are built on strong mathematical principles and provide excellent generalization performance.</p>
+<p>In this notebook, we cover: - Mathematical intuition behind SVMs - Linear and kernel-based SVM models - Python implementation using scikit-learn - Visualization of decision boundaries## 📖 Introduction</p>
+<p>Support Vector Machines (SVMs) are <strong>powerful supervised learning algorithms</strong> widely used for classification and regression tasks.<br>
+They are particularly valued for their <strong>strong theoretical guarantees</strong> and <strong>excellent generalization ability</strong>.</p>
 </section>
-<section id="the-linear-algebra-perspective" class="level2" data-number="2">
-<h2 data-number="2" class="anchored" data-anchor-id="the-linear-algebra-perspective"><span class="header-section-number">2</span> The Linear Algebra Perspective</h2>
-<section id="geometry-of-separation" class="level3" data-number="2.1">
-<h3 data-number="2.1" class="anchored" data-anchor-id="geometry-of-separation"><span class="header-section-number">2.1</span> <em>Geometry of Separation</em></h3>
-<p>From a linear algebra viewpoint, Support Vector Machines treat data as <strong>points in a high-dimensional vector space</strong>. Each input sample is represented as a feature vector, transforming learning into a problem of <strong>geometric separation</strong>.</p>
-<p>At the core of SVM lies the concept of a <strong>hyperplane</strong>, defined by a weight vector and a bias term. This hyperplane acts as a decision boundary that separates data points belonging to different classes. Linear algebra governs how this boundary is oriented and positioned through operations such as dot products, vector norms, and projections.</p>
-<p>A key innovation of SVM is the <strong>margin</strong>—the distance between the hyperplane and the nearest data points from each class. These nearest points, known as <strong>support vectors</strong>, uniquely define the model. As a result, SVM decisions depend on a small subset of critical data points rather than the entire dataset.</p>
-<p>When data is not linearly separable, SVMs employ <strong>kernel functions</strong> that implicitly map data into higher-dimensional spaces, where linear separation becomes feasible. This highlights the expressive power of linear algebra in modern machine learning.</p>
-<hr>
-</section>
-</section>
-<section id="the-statistical-foundation" class="level2" data-number="3">
-<h2 data-number="3" class="anchored" data-anchor-id="the-statistical-foundation"><span class="header-section-number">3</span> The Statistical Foundation</h2>
-<section id="risk-margin-and-generalization" class="level3" data-number="3.1">
-<h3 data-number="3.1" class="anchored" data-anchor-id="risk-margin-and-generalization"><span class="header-section-number">3.1</span> <em>Risk, Margin, and Generalization</em></h3>
-<p>Statistics provides the framework for understanding what makes an SVM model effective. Unlike regression models that minimize squared error, SVMs rely on the <strong>hinge loss</strong>, which penalizes incorrect classifications and points that lie too close to the decision boundary.</p>
-<p>A central statistical concept in SVM is <strong>regularization</strong>, which balances two competing objectives:</p>
+<section id="what-this-notebook-covers" class="level3" data-number="1.0.2">
+<h3 data-number="1.0.2" class="anchored" data-anchor-id="what-this-notebook-covers"><span class="header-section-number">1.0.2</span> 🔍 What this notebook covers</h3>
 <ul>
-<li>Maximizing the margin (model simplicity)</li>
-<li>Minimizing classification errors (data fit)</li>
-</ul>
-<p>This balance reflects the classical <strong>bias–variance trade-off</strong>. By controlling the regularization parameter, SVMs reduce overfitting while maintaining strong predictive performance.</p>
-<p>Rather than modeling class probabilities explicitly, SVMs are grounded in <strong>statistical learning theory</strong> and the principle of <strong>structural risk minimization</strong>, ensuring robustness even in high-dimensional feature spaces.</p>
-<hr>
-</section>
-</section>
-<section id="the-calculus-engine" class="level2" data-number="4">
-<h2 data-number="4" class="anchored" data-anchor-id="the-calculus-engine"><span class="header-section-number">4</span> The Calculus Engine</h2>
-<section id="gradients-and-constraints" class="level3" data-number="4.1">
-<h3 data-number="4.1" class="anchored" data-anchor-id="gradients-and-constraints"><span class="header-section-number">4.1</span> <em>Gradients and Constraints</em></h3>
-<p>Although often presented geometrically, SVM training relies heavily on calculus. The learning objective is formulated as a constrained optimization problem, combining margin maximization with penalty terms for misclassification.</p>
-<p>Calculus enables this formulation through:</p>
-<ul>
-<li><strong>Gradients</strong>, which describe how the objective function changes</li>
-<li><strong>Lagrange multipliers</strong>, which incorporate constraints directly into the optimization process</li>
-</ul>
-<p>These tools transform intuitive geometric goals into a mathematically solvable problem. Even when closed-form solvers or quadratic programming techniques are used, calculus remains the underlying engine that guarantees correctness and convergence.</p>
-<hr>
-</section>
-</section>
-<section id="the-optimization-strategy" class="level2" data-number="5">
-<h2 data-number="5" class="anchored" data-anchor-id="the-optimization-strategy"><span class="header-section-number">5</span> The Optimization Strategy</h2>
-<section id="finding-the-maximum-margin-solution" class="level3" data-number="5.1">
-<h3 data-number="5.1" class="anchored" data-anchor-id="finding-the-maximum-margin-solution"><span class="header-section-number">5.1</span> <em>Finding the Maximum-Margin Solution</em></h3>
-<p>Optimization unifies all previous pillars into a practical learning algorithm. The SVM objective function is <strong>convex</strong>, meaning it has a single global minimum—an essential property for stable and reliable learning.</p>
-<p>Optimization theory governs:</p>
-<ul>
-<li>How constraints are enforced</li>
-<li>Why convergence is guaranteed</li>
-<li>How efficiently solutions are found</li>
-</ul>
-<p>Modern SVM implementations rely on <strong>quadratic programming</strong> and <strong>dual optimization</strong> methods, enabling efficient training even for large-scale datasets. The final model is defined entirely by its support vectors, making SVM both computationally efficient and interpretable.</p>
-<hr>
-</section>
-</section>
-<section id="mapping-svm-to-the-four-pillars" class="level2" data-number="6">
-<h2 data-number="6" class="anchored" data-anchor-id="mapping-svm-to-the-four-pillars"><span class="header-section-number">6</span> Mapping SVM to the Four Pillars</h2>
-<p>Support Vector Machines demonstrate a seamless integration of all four foundational pillars:</p>
-<ul>
-<li><strong>Linear Algebra</strong>: Feature spaces, hyperplanes, margins, kernels<br>
+<li>🧮 Mathematical intuition behind SVMs<br>
 </li>
-<li><strong>Statistics</strong>: Generalization, regularization, risk minimization<br>
+<li>🧑‍💻 Step-by-step Python implementation<br>
 </li>
-<li><strong>Calculus</strong>: Gradients, constrained optimization, Lagrangians<br>
+<li>📊 Visualization of decision boundaries<br>
 </li>
-<li><strong>Optimization</strong>: Convex solvers, convergence, efficiency</li>
+<li>🧠 Interpretation of model behavior</li>
 </ul>
-<p>This unified view reveals SVM as a mathematically disciplined system rather than a black-box classifier.</p>
+</section>
+<section id="mathematical-foundations-of-svm" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="mathematical-foundations-of-svm"><span class="header-section-number">1.1</span> 🧩 Mathematical Foundations of SVM</h2>
+<section id="linear-algebra-perspective" class="level3" data-number="1.1.1">
+<h3 data-number="1.1.1" class="anchored" data-anchor-id="linear-algebra-perspective"><span class="header-section-number">1.1.1</span> 🧮 Linear Algebra Perspective</h3>
+<p>This is how a computer sees data. To a machine, patients, images, or lab results aren’t words or pictures — they’re organized numbers arranged in tables and vectors. Linear algebra gives structure to this data and allows the model to combine different features, like age, symptoms, or gene counts, in a meaningful way.</p>
+<p>From a linear algebra standpoint, SVMs interpret data geometrically. Each input sample is represented as a vector in a high-dimensional feature space, and the entire dataset forms a matrix where rows correspond to samples and columns correspond to features.</p>
+<p>The central goal of an SVM is to find a hyperplane that separates data points belonging to different classes. This hyperplane is defined by a weight vector and a bias term. Classification is achieved by computing the dot product between the input vectors and the weight vector, followed by an offset. This operation determines on which side of the hyperplane a data point lies.</p>
+<p>In the case of non-linearly separable data, SVMs rely on kernel functions, which implicitly map data into higher-dimensional spaces where linear separation becomes possible. These kernel-induced transformations are purely linear algebraic operations, demonstrating how linear algebra enables powerful feature transformations without explicitly computing them.</p>
+<p>Each data point is represented as a vector in a high-dimensional space.<br>
+SVM aims to find a hyperplane:</p>
+<p>wᵀx + b = 0</p>
+<p>that best separates data points from different classes.</p>
 <hr>
 </section>
-<section id="curriculum-alignment" class="level2" data-number="7">
-<h2 data-number="7" class="anchored" data-anchor-id="curriculum-alignment"><span class="header-section-number">7</span> Curriculum Alignment</h2>
-<section id="core-machine-learning" class="level3" data-number="7.1">
-<h3 data-number="7.1" class="anchored" data-anchor-id="core-machine-learning"><span class="header-section-number">7.1</span> Core Machine Learning</h3>
-<p>Support Vector Machines act as a bridge between simple linear models and advanced classifiers, drawing equally from all four pillars.</p>
-</section>
-<section id="deep-learning" class="level3" data-number="7.2">
-<h3 data-number="7.2" class="anchored" data-anchor-id="deep-learning"><span class="header-section-number">7.2</span> Deep Learning</h3>
-<p>Concepts such as margins, regularization, and optimization directly influence modern neural network training and loss design.</p>
-</section>
-<section id="bayesian-and-statistical-learning" class="level3" data-number="7.3">
-<h3 data-number="7.3" class="anchored" data-anchor-id="bayesian-and-statistical-learning"><span class="header-section-number">7.3</span> Bayesian and Statistical Learning</h3>
-<p>Although SVMs are not probabilistic, their grounding in statistical learning theory provides a strong contrast to Bayesian approaches.</p>
-</section>
-<section id="optimization-theory-and-deployment" class="level3" data-number="7.4">
-<h3 data-number="7.4" class="anchored" data-anchor-id="optimization-theory-and-deployment"><span class="header-section-number">7.4</span> Optimization Theory and Deployment</h3>
-<p>Kernel selection, solver efficiency, and scalability highlight real-world optimization challenges encountered in AI systems.</p>
+<section id="statistical-perspective" class="level3" data-number="1.1.2">
+<h3 data-number="1.1.2" class="anchored" data-anchor-id="statistical-perspective"><span class="header-section-number">1.1.2</span> 📊 Statistical Perspective</h3>
+<p>statistics helps the model decide what matters and what doesn’t. Real-world data is noisy — not every pattern is real. Statistics gives us tools to measure error, uncertainty, and confidence, and helps ensure the model doesn’t just memorize data, but actually learns patterns that generalize to new cases.</p>
+<p>Statistics provides the rationale for why SVMs generalize well to unseen data. Instead of merely minimizing classification error on the training set, SVMs aim to maximize the margin—the distance between the separating hyperplane and the closest data points from each class (support vectors).</p>
+<p>This margin maximization embodies a statistical principle: models with larger margins tend to have lower generalization error. By focusing only on a subset of critical points (the support vectors), SVMs reduce sensitivity to noise and outliers.</p>
+<p>In soft-margin SVMs, a regularization parameter balances the trade-off between maximizing the margin and allowing misclassifications. This reflects a statistical bias–variance trade-off, ensuring robustness when data are noisy or overlapping.</p>
 <hr>
 </section>
-</section>
-<section id="key-takeaway" class="level2" data-number="8">
-<h2 data-number="8" class="anchored" data-anchor-id="key-takeaway"><span class="header-section-number">8</span> Key Takeaway</h2>
-<p>Support Vector Machines demonstrate that <strong>intelligence emerges from the disciplined interaction of mathematics</strong>.<br>
-By analyzing SVM through the four lenses, we uncover the same foundational structure that underpins both classical machine learning algorithms and modern AI systems.</p>
+<section id="calculus-perspective" class="level3" data-number="1.1.3">
+<h3 data-number="1.1.3" class="anchored" data-anchor-id="calculus-perspective"><span class="header-section-number">1.1.3</span> 📐 Calculus Perspective</h3>
+<p>Calculus is how the model learns. After making a prediction, the model asks: “How wrong was I?” Calculus tells it which direction to move to improve. By making many small, smart adjustments, the model gradually gets better — just like learning by correcting mistakes.</p>
+<p>Although SVMs are often solved using convex optimization techniques, calculus plays a crucial role in understanding their learning dynamics. The objective function in SVMs consists of a regularization term and a loss function—commonly the hinge loss.</p>
+<p>The gradient (or subgradient) of this loss function with respect to the model parameters indicates how changes in the parameters affect classification performance. These gradient-based insights allow iterative methods to update parameters efficiently.</p>
+<p>In large-scale or online learning scenarios, gradient-based solvers such as stochastic gradient descent rely directly on calculus to adjust model parameters, highlighting how differentiation enables systematic learning rather than heuristic tuning.</p>
+<p>SVM uses the <strong>hinge loss</strong>:</p>
+<p>L(y, f(x)) = max(0, 1 − y f(x))</p>
+<p>Gradients (or subgradients) of this loss guide parameter updates.</p>
 <hr>
+</section>
+<section id="optimization-perspective" class="level3" data-number="1.1.4">
+<h3 data-number="1.1.4" class="anchored" data-anchor-id="optimization-perspective"><span class="header-section-number">1.1.4</span> ⚙️ Optimization Perspective</h3>
+<p>Optimization is the strategy behind learning. It controls how fast the model learns, when it should stop, and how to reach the best solution efficiently. Without optimization, learning would be slow, unstable, or unreliable.</p>
+<p>Optimization theory provides the framework that makes SVMs both efficient and reliable. The SVM training problem is formulated as a convex optimization problem, meaning it has a single global optimum and no local minima.</p>
+<p>This convexity guarantees that optimization algorithms converge to the best possible solution. Depending on the formulation, SVMs can be solved using quadratic programming, dual optimization, or gradient-based methods.</p>
+<p>Optimization principles guide critical design choices, such as selecting regularization parameters, choosing appropriate kernels, and determining convergence criteria. These choices ensure that training is computationally efficient while maintaining high predictive performance.</p>
+<div id="10479b76" class="cell" data-execution_count="1">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn <span class="im">import</span> datasets</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, classification_report</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>This cell imports all the required Python libraries: - <strong>NumPy</strong> for numerical computations - <strong>Matplotlib</strong> for visualization - <strong>scikit-learn</strong> for dataset loading, model building, and evaluation</p>
+<p><code>SVC</code> is the Support Vector Classifier used to implement SVM models.</p>
+<div id="14e8ed82" class="cell" data-execution_count="2">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load Iris dataset</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>iris <span class="op">=</span> datasets.load_iris()</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> iris.data[:, :<span class="dv">2</span>]  <span class="co"># Select first two features for visualization</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> iris.target</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to binary classification (class 0 vs class 1)</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> X[y <span class="op">!=</span> <span class="dv">2</span>]</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> y[y <span class="op">!=</span> <span class="dv">2</span>]</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Split data into training and testing sets</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>    X, y, test_size<span class="op">=</span><span class="fl">0.3</span>, random_state<span class="op">=</span><span class="dv">42</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In this step: - The <strong>Iris dataset</strong> is loaded as a sample classification problem. - Only two features are selected to allow easy visualization of decision boundaries. - The problem is converted into <strong>binary classification</strong>. - The dataset is split into training and testing sets to evaluate generalization performance.</p>
+</section>
+</section>
+<section id="training-a-linear-svm" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="training-a-linear-svm"><span class="header-section-number">1.2</span> Training a Linear SVM</h2>
+<p>We begin with a linear kernel, which attempts to separate the classes using a straight-line decision boundary.</p>
+<div id="66bd036b" class="cell" data-execution_count="3">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>svm_linear <span class="op">=</span> SVC(kernel<span class="op">=</span><span class="st">'linear'</span>, C<span class="op">=</span><span class="fl">1.0</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>svm_linear.fit(X_train, y_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display" data-execution_count="3">
+<style>#sk-container-id-1 {
+  /* Definition of color scheme common for light and dark mode */
+  --sklearn-color-text: #000;
+  --sklearn-color-text-muted: #666;
+  --sklearn-color-line: gray;
+  /* Definition of color scheme for unfitted estimators */
+  --sklearn-color-unfitted-level-0: #fff5e6;
+  --sklearn-color-unfitted-level-1: #f6e4d2;
+  --sklearn-color-unfitted-level-2: #ffe0b3;
+  --sklearn-color-unfitted-level-3: chocolate;
+  /* Definition of color scheme for fitted estimators */
+  --sklearn-color-fitted-level-0: #f0f8ff;
+  --sklearn-color-fitted-level-1: #d4ebff;
+  --sklearn-color-fitted-level-2: #b3dbfd;
+  --sklearn-color-fitted-level-3: cornflowerblue;
+
+  /* Specific color for light theme */
+  --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, white)));
+  --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, black)));
+  --sklearn-color-icon: #696969;
+
+  @media (prefers-color-scheme: dark) {
+    /* Redefinition of color scheme for dark theme */
+    --sklearn-color-text-on-default-background: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-background: var(--sg-background-color, var(--theme-background, var(--jp-layout-color0, #111)));
+    --sklearn-color-border-box: var(--sg-text-color, var(--theme-code-foreground, var(--jp-content-font-color1, white)));
+    --sklearn-color-icon: #878787;
+  }
+}
+
+#sk-container-id-1 {
+  color: var(--sklearn-color-text);
+}
+
+#sk-container-id-1 pre {
+  padding: 0;
+}
+
+#sk-container-id-1 input.sk-hidden--visually {
+  border: 0;
+  clip: rect(1px 1px 1px 1px);
+  clip: rect(1px, 1px, 1px, 1px);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+}
+
+#sk-container-id-1 div.sk-dashed-wrapped {
+  border: 1px dashed var(--sklearn-color-line);
+  margin: 0 0.4em 0.5em 0.4em;
+  box-sizing: border-box;
+  padding-bottom: 0.4em;
+  background-color: var(--sklearn-color-background);
+}
+
+#sk-container-id-1 div.sk-container {
+  /* jupyter's `normalize.less` sets `[hidden] { display: none; }`
+     but bootstrap.min.css set `[hidden] { display: none !important; }`
+     so we also need the `!important` here to be able to override the
+     default hidden behavior on the sphinx rendered scikit-learn.org.
+     See: https://github.com/scikit-learn/scikit-learn/issues/21755 */
+  display: inline-block !important;
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-text-repr-fallback {
+  display: none;
+}
+
+div.sk-parallel-item,
+div.sk-serial,
+div.sk-item {
+  /* draw centered vertical line to link estimators */
+  background-image: linear-gradient(var(--sklearn-color-text-on-default-background), var(--sklearn-color-text-on-default-background));
+  background-size: 2px 100%;
+  background-repeat: no-repeat;
+  background-position: center center;
+}
+
+/* Parallel-specific style estimator block */
+
+#sk-container-id-1 div.sk-parallel-item::after {
+  content: "";
+  width: 100%;
+  border-bottom: 2px solid var(--sklearn-color-text-on-default-background);
+  flex-grow: 1;
+}
+
+#sk-container-id-1 div.sk-parallel {
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  background-color: var(--sklearn-color-background);
+  position: relative;
+}
+
+#sk-container-id-1 div.sk-parallel-item {
+  display: flex;
+  flex-direction: column;
+}
+
+#sk-container-id-1 div.sk-parallel-item:first-child::after {
+  align-self: flex-end;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:last-child::after {
+  align-self: flex-start;
+  width: 50%;
+}
+
+#sk-container-id-1 div.sk-parallel-item:only-child::after {
+  width: 0;
+}
+
+/* Serial-specific style estimator block */
+
+#sk-container-id-1 div.sk-serial {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--sklearn-color-background);
+  padding-right: 1em;
+  padding-left: 1em;
+}
 
 
+/* Toggleable style: style used for estimator/Pipeline/ColumnTransformer box that is
+clickable and can be expanded/collapsed.
+- Pipeline and ColumnTransformer use this feature and define the default style
+- Estimators will overwrite some part of the style using the `sk-estimator` class
+*/
+
+/* Pipeline and ColumnTransformer style (default) */
+
+#sk-container-id-1 div.sk-toggleable {
+  /* Default theme specific background. It is overwritten whether we have a
+  specific estimator or a Pipeline/ColumnTransformer */
+  background-color: var(--sklearn-color-background);
+}
+
+/* Toggleable label */
+#sk-container-id-1 label.sk-toggleable__label {
+  cursor: pointer;
+  display: flex;
+  width: 100%;
+  margin-bottom: 0;
+  padding: 0.5em;
+  box-sizing: border-box;
+  text-align: center;
+  align-items: start;
+  justify-content: space-between;
+  gap: 0.5em;
+}
+
+#sk-container-id-1 label.sk-toggleable__label .caption {
+  font-size: 0.6rem;
+  font-weight: lighter;
+  color: var(--sklearn-color-text-muted);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:before {
+  /* Arrow on the left of the label */
+  content: "▸";
+  float: left;
+  margin-right: 0.25em;
+  color: var(--sklearn-color-icon);
+}
+
+#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {
+  color: var(--sklearn-color-text);
+}
+
+/* Toggleable content - dropdown */
+
+#sk-container-id-1 div.sk-toggleable__content {
+  display: none;
+  text-align: left;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content pre {
+  margin: 0.2em;
+  border-radius: 0.25em;
+  color: var(--sklearn-color-text);
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-toggleable__content.fitted pre {
+  /* unfitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {
+  /* Expand drop-down */
+  display: block;
+  width: 100%;
+  overflow: visible;
+}
+
+#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {
+  content: "▾";
+}
+
+/* Pipeline/ColumnTransformer-specific style */
+
+#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator-specific style */
+
+/* Colorize estimator box */
+#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted input.sk-toggleable__control:checked~label.sk-toggleable__label {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+#sk-container-id-1 div.sk-label label.sk-toggleable__label,
+#sk-container-id-1 div.sk-label label {
+  /* The background is the default theme color */
+  color: var(--sklearn-color-text-on-default-background);
+}
+
+/* On hover, darken the color of the background */
+#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+/* Label box, darken color on hover, fitted */
+#sk-container-id-1 div.sk-label.fitted:hover label.sk-toggleable__label.fitted {
+  color: var(--sklearn-color-text);
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Estimator label */
+
+#sk-container-id-1 div.sk-label label {
+  font-family: monospace;
+  font-weight: bold;
+  display: inline-block;
+  line-height: 1.2em;
+}
+
+#sk-container-id-1 div.sk-label-container {
+  text-align: center;
+}
+
+/* Estimator-specific */
+#sk-container-id-1 div.sk-estimator {
+  font-family: monospace;
+  border: 1px dotted var(--sklearn-color-border-box);
+  border-radius: 0.25em;
+  box-sizing: border-box;
+  margin-bottom: 0.5em;
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-0);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-0);
+}
+
+/* on hover */
+#sk-container-id-1 div.sk-estimator:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-2);
+}
+
+#sk-container-id-1 div.sk-estimator.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-2);
+}
+
+/* Specification for estimator info (e.g. "i" and "?") */
+
+/* Common style for "i" and "?" */
+
+.sk-estimator-doc-link,
+a:link.sk-estimator-doc-link,
+a:visited.sk-estimator-doc-link {
+  float: right;
+  font-size: smaller;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1em;
+  height: 1em;
+  width: 1em;
+  text-decoration: none !important;
+  margin-left: 0.5em;
+  text-align: center;
+  /* unfitted */
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+  color: var(--sklearn-color-unfitted-level-1);
+}
+
+.sk-estimator-doc-link.fitted,
+a:link.sk-estimator-doc-link.fitted,
+a:visited.sk-estimator-doc-link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+div.sk-estimator:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover,
+div.sk-label-container:hover .sk-estimator-doc-link:hover,
+.sk-estimator-doc-link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+div.sk-estimator.fitted:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover,
+div.sk-label-container:hover .sk-estimator-doc-link.fitted:hover,
+.sk-estimator-doc-link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+/* Span, style for the box shown on hovering the info icon */
+.sk-estimator-doc-link span {
+  display: none;
+  z-index: 9999;
+  position: relative;
+  font-weight: normal;
+  right: .2ex;
+  padding: .5ex;
+  margin: .5ex;
+  width: min-content;
+  min-width: 20ex;
+  max-width: 50ex;
+  color: var(--sklearn-color-text);
+  box-shadow: 2pt 2pt 4pt #999;
+  /* unfitted */
+  background: var(--sklearn-color-unfitted-level-0);
+  border: .5pt solid var(--sklearn-color-unfitted-level-3);
+}
+
+.sk-estimator-doc-link.fitted span {
+  /* fitted */
+  background: var(--sklearn-color-fitted-level-0);
+  border: var(--sklearn-color-fitted-level-3);
+}
+
+.sk-estimator-doc-link:hover span {
+  display: block;
+}
+
+/* "?"-specific style due to the `<a>` HTML tag */
+
+#sk-container-id-1 a.estimator_doc_link {
+  float: right;
+  font-size: 1rem;
+  line-height: 1em;
+  font-family: monospace;
+  background-color: var(--sklearn-color-background);
+  border-radius: 1rem;
+  height: 1rem;
+  width: 1rem;
+  text-decoration: none;
+  /* unfitted */
+  color: var(--sklearn-color-unfitted-level-1);
+  border: var(--sklearn-color-unfitted-level-1) 1pt solid;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted {
+  /* fitted */
+  border: var(--sklearn-color-fitted-level-1) 1pt solid;
+  color: var(--sklearn-color-fitted-level-1);
+}
+
+/* On hover */
+#sk-container-id-1 a.estimator_doc_link:hover {
+  /* unfitted */
+  background-color: var(--sklearn-color-unfitted-level-3);
+  color: var(--sklearn-color-background);
+  text-decoration: none;
+}
+
+#sk-container-id-1 a.estimator_doc_link.fitted:hover {
+  /* fitted */
+  background-color: var(--sklearn-color-fitted-level-3);
+}
+
+.estimator-table summary {
+    padding: .5rem;
+    font-family: monospace;
+    cursor: pointer;
+}
+
+.estimator-table details[open] {
+    padding-left: 0.1rem;
+    padding-right: 0.1rem;
+    padding-bottom: 0.3rem;
+}
+
+.estimator-table .parameters-table {
+    margin-left: auto !important;
+    margin-right: auto !important;
+}
+
+.estimator-table .parameters-table tr:nth-child(odd) {
+    background-color: #fff;
+}
+
+.estimator-table .parameters-table tr:nth-child(even) {
+    background-color: #f6f6f6;
+}
+
+.estimator-table .parameters-table tr:hover {
+    background-color: #e0e0e0;
+}
+
+.estimator-table table td {
+    border: 1px solid rgba(106, 105, 104, 0.232);
+}
+
+.user-set td {
+    color:rgb(255, 94, 0);
+    text-align: left;
+}
+
+.user-set td.value pre {
+    color:rgb(255, 94, 0) !important;
+    background-color: transparent !important;
+}
+
+.default td {
+    color: black;
+    text-align: left;
+}
+
+.user-set td i,
+.default td i {
+    color: black;
+}
+
+.copy-paste-icon {
+    background-image: url(data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0NDggNTEyIj48IS0tIUZvbnQgQXdlc29tZSBGcmVlIDYuNy4yIGJ5IEBmb250YXdlc29tZSAtIGh0dHBzOi8vZm9udGF3ZXNvbWUuY29tIExpY2Vuc2UgLSBodHRwczovL2ZvbnRhd2Vzb21lLmNvbS9saWNlbnNlL2ZyZWUgQ29weXJpZ2h0IDIwMjUgRm9udGljb25zLCBJbmMuLS0+PHBhdGggZD0iTTIwOCAwTDMzMi4xIDBjMTIuNyAwIDI0LjkgNS4xIDMzLjkgMTQuMWw2Ny45IDY3LjljOSA5IDE0LjEgMjEuMiAxNC4xIDMzLjlMNDQ4IDMzNmMwIDI2LjUtMjEuNSA0OC00OCA0OGwtMTkyIDBjLTI2LjUgMC00OC0yMS41LTQ4LTQ4bDAtMjg4YzAtMjYuNSAyMS41LTQ4IDQ4LTQ4ek00OCAxMjhsODAgMCAwIDY0LTY0IDAgMCAyNTYgMTkyIDAgMC0zMiA2NCAwIDAgNDhjMCAyNi41LTIxLjUgNDgtNDggNDhMNDggNTEyYy0yNi41IDAtNDgtMjEuNS00OC00OEwwIDE3NmMwLTI2LjUgMjEuNS00OCA0OC00OHoiLz48L3N2Zz4=);
+    background-repeat: no-repeat;
+    background-size: 14px 14px;
+    background-position: 0;
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>SVC(kernel='linear')</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br>On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden=""><div class="sk-item"><div class="sk-estimator fitted sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked=""><label for="sk-estimator-id-1" class="sk-toggleable__label fitted sk-toggleable__label-arrow"><div><div>SVC</div></div><div><a class="sk-estimator-doc-link fitted" rel="noreferrer" target="_blank" href="https://scikit-learn.org/1.7/modules/generated/sklearn.svm.SVC.html">?<span>Documentation for SVC</span></a><span class="sk-estimator-doc-link fitted">i<span>Fitted</span></span></div></label><div class="sk-toggleable__content fitted" data-param-prefix="">
+        <div class="estimator-table">
+            <details>
+                <summary>Parameters</summary>
+                
+<table class="parameters-table caption-top table table-sm table-striped small">
+<tbody>
+<tr class="default odd">
+<td><em></em></td>
+<td class="param">C&nbsp;</td>
+<td class="value">1.0</td>
+</tr>
+<tr class="user-set even">
+<td><em></em></td>
+<td class="param">kernel&nbsp;</td>
+<td class="value">'linear'</td>
+</tr>
+<tr class="default odd">
+<td><em></em></td>
+<td class="param">degree&nbsp;</td>
+<td class="value">3</td>
+</tr>
+<tr class="default even">
+<td><em></em></td>
+<td class="param">gamma&nbsp;</td>
+<td class="value">'scale'</td>
+</tr>
+<tr class="default odd">
+<td><em></em></td>
+<td class="param">coef0&nbsp;</td>
+<td class="value">0.0</td>
+</tr>
+<tr class="default even">
+<td><em></em></td>
+<td class="param">shrinking&nbsp;</td>
+<td class="value">True</td>
+</tr>
+<tr class="default odd">
+<td><em></em></td>
+<td class="param">probability&nbsp;</td>
+<td class="value">False</td>
+</tr>
+<tr class="default even">
+<td><em></em></td>
+<td class="param">tol&nbsp;</td>
+<td class="value">0.001</td>
+</tr>
+<tr class="default odd">
+<td><em></em></td>
+<td class="param">cache_size&nbsp;</td>
+<td class="value">200</td>
+</tr>
+<tr class="default even">
+<td><em></em></td>
+<td class="param">class_weight&nbsp;</td>
+<td class="value">None</td>
+</tr>
+<tr class="default odd">
+<td><em></em></td>
+<td class="param">verbose&nbsp;</td>
+<td class="value">False</td>
+</tr>
+<tr class="default even">
+<td><em></em></td>
+<td class="param">max_iter&nbsp;</td>
+<td class="value">-1</td>
+</tr>
+<tr class="default odd">
+<td><em></em></td>
+<td class="param">decision_function_shape&nbsp;</td>
+<td class="value">'ovr'</td>
+</tr>
+<tr class="default even">
+<td><em></em></td>
+<td class="param">break_ties&nbsp;</td>
+<td class="value">False</td>
+</tr>
+<tr class="default odd">
+<td><em></em></td>
+<td class="param">random_state&nbsp;</td>
+<td class="value">None</td>
+</tr>
+</tbody>
+</table>
+
+            </details>
+        </div>
+    </div></div></div></div></div><script>function copyToClipboard(text, element) {
+    // Get the parameter prefix from the closest toggleable content
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const fullParamName = paramPrefix ? `${paramPrefix}${text}` : text;
+
+    const originalStyle = element.style;
+    const computedStyle = window.getComputedStyle(element);
+    const originalWidth = computedStyle.width;
+    const originalHTML = element.innerHTML.replace('Copied!', '');
+
+    navigator.clipboard.writeText(fullParamName)
+        .then(() => {
+            element.style.width = originalWidth;
+            element.style.color = 'green';
+            element.innerHTML = "Copied!";
+
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        })
+        .catch(err => {
+            console.error('Failed to copy:', err);
+            element.style.color = 'red';
+            element.innerHTML = "Failed!";
+            setTimeout(() => {
+                element.innerHTML = originalHTML;
+                element.style = originalStyle;
+            }, 2000);
+        });
+    return false;
+}
+
+document.querySelectorAll('.fa-regular.fa-copy').forEach(function(element) {
+    const toggleableContent = element.closest('.sk-toggleable__content');
+    const paramPrefix = toggleableContent ? toggleableContent.dataset.paramPrefix : '';
+    const paramName = element.parentElement.nextElementSibling.textContent.trim();
+    const fullParamName = paramPrefix ? `${paramPrefix}${paramName}` : paramName;
+
+    element.setAttribute('title', fullParamName);
+});
+</script>
+</div>
+</div>
+</section>
+<section id="training-a-linear-svm-1" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="training-a-linear-svm-1"><span class="header-section-number">1.3</span> 📈 Training a Linear SVM</h2>
+<p>A <strong>linear SVM</strong> attempts to separate data using a straight-line (or hyperplane) decision boundary.</p>
+<section id="key-parameters" class="level3" data-number="1.3.1">
+<h3 data-number="1.3.1" class="anchored" data-anchor-id="key-parameters"><span class="header-section-number">1.3.1</span> 🔧 Key Parameters</h3>
+<ul>
+<li><strong>Kernel:</strong> Linear<br>
+</li>
+<li><strong>C:</strong> Regularization parameter controlling margin vs misclassification</li>
+</ul>
+<p>We begin with this simplest form of SVM to build intuition.</p>
+<div id="11aa2770" class="cell" data-execution_count="4">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> svm_linear.predict(X_test)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Accuracy:"</span>, accuracy_score(y_test, y_pred))</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Classification Report:</span><span class="ch">\n</span><span class="st">"</span>, classification_report(y_test, y_pred))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Accuracy: 1.0
+
+Classification Report:
+               precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00        17
+           1       1.00      1.00      1.00        13
+
+    accuracy                           1.00        30
+   macro avg       1.00      1.00      1.00        30
+weighted avg       1.00      1.00      1.00        30
+</code></pre>
+</div>
+</div>
+</section>
+<section id="model-evaluation" class="level3" data-number="1.3.2">
+<h3 data-number="1.3.2" class="anchored" data-anchor-id="model-evaluation"><span class="header-section-number">1.3.2</span> 📊 Model Evaluation</h3>
+<p>The trained model is evaluated using: - <strong>Accuracy</strong> – overall correctness - <strong>Precision &amp; Recall</strong> – class-wise performance - <strong>F1-score</strong> – balance between precision and recall</p>
+<blockquote class="blockquote">
+<p>🎯 Evaluation on unseen data helps assess real-world performance.</p>
+</blockquote>
+</section>
+</section>
+<section id="visualizing-the-decision-boundary" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="visualizing-the-decision-boundary"><span class="header-section-number">1.4</span> 🖼️ Visualizing the Decision Boundary</h2>
+<p>Visualization provides geometric intuition into SVM behavior.</p>
+<section id="what-we-observe" class="level3" data-number="1.4.1">
+<h3 data-number="1.4.1" class="anchored" data-anchor-id="what-we-observe"><span class="header-section-number">1.4.1</span> What we observe:</h3>
+<ul>
+<li>The <strong>decision boundary</strong> (hyperplane)</li>
+<li>The <strong>margin</strong></li>
+<li>Distribution of training samples</li>
+</ul>
+<blockquote class="blockquote">
+<p>📐 Only a few critical points — <strong>support vectors</strong> — define the boundary.</p>
+</blockquote>
+<div id="b1a0dd5e" class="cell" data-execution_count="5">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> plot_decision_boundary(model, X, y):</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    h <span class="op">=</span> <span class="fl">0.02</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    x_min, x_max <span class="op">=</span> X[:, <span class="dv">0</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">1</span>, X[:, <span class="dv">0</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>    y_min, y_max <span class="op">=</span> X[:, <span class="dv">1</span>].<span class="bu">min</span>() <span class="op">-</span> <span class="dv">1</span>, X[:, <span class="dv">1</span>].<span class="bu">max</span>() <span class="op">+</span> <span class="dv">1</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>    xx, yy <span class="op">=</span> np.meshgrid(</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>        np.arange(x_min, x_max, h),</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>        np.arange(y_min, y_max, h)</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> model.predict(np.c_[xx.ravel(), yy.ravel()])</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>    Z <span class="op">=</span> Z.reshape(xx.shape)</span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>    plt.contourf(xx, yy, Z, alpha<span class="op">=</span><span class="fl">0.3</span>)</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>    plt.scatter(X[:, <span class="dv">0</span>], X[:, <span class="dv">1</span>], c<span class="op">=</span>y, edgecolor<span class="op">=</span><span class="st">'k'</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>    plt.xlabel(<span class="st">"Feature 1"</span>)</span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>    plt.ylabel(<span class="st">"Feature 2"</span>)</span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>    plt.title(<span class="st">"SVM Decision Boundary"</span>)</span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a>    plt.show()</span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>plot_decision_boundary(svm_linear, X_train, y_train)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="svm_files/figure-html/cell-6-output-1.png" width="589" height="449" class="figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This function: - Creates a grid over the feature space - Predicts class labels for each grid point - Visualizes the <strong>decision boundary</strong> and training samples</p>
+<p>This demonstrates how SVM constructs a separating hyperplane based on support vectors.</p>
+<div id="abcfdf66" class="cell" data-execution_count="6">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>svm_rbf <span class="op">=</span> SVC(kernel<span class="op">=</span><span class="st">'rbf'</span>, C<span class="op">=</span><span class="fl">1.0</span>, gamma<span class="op">=</span><span class="st">'scale'</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>svm_rbf.fit(X_train, y_train)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>y_pred_rbf <span class="op">=</span> svm_rbf.predict(X_test)</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"RBF Kernel Accuracy:"</span>, accuracy_score(y_test, y_pred_rbf))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>RBF Kernel Accuracy: 1.0</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="kernel-svm-rbf-kernel" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="kernel-svm-rbf-kernel"><span class="header-section-number">1.5</span> 🌐 Kernel SVM (RBF Kernel)</h2>
+<p>Real-world data is often <strong>not linearly separable</strong>.<br>
+Kernel functions enable SVMs to model <strong>non-linear decision boundaries</strong>.</p>
+<section id="rbf-kernel-highlights" class="level3" data-number="1.5.1">
+<h3 data-number="1.5.1" class="anchored" data-anchor-id="rbf-kernel-highlights"><span class="header-section-number">1.5.1</span> 🌀 RBF Kernel Highlights</h3>
+<ul>
+<li>Implicitly maps data to higher dimensions</li>
+<li>Captures complex patterns</li>
+<li>Controlled by the <code>gamma</code> parameter</li>
+</ul>
+<p>This allows SVMs to remain powerful even in complex feature spaces.</p>
+</section>
+</section>
+<section id="interpretation-of-results" class="level2" data-number="1.6">
+<h2 data-number="1.6" class="anchored" data-anchor-id="interpretation-of-results"><span class="header-section-number">1.6</span> 🧠 Interpretation of Results</h2>
+<p>✔ Linear SVM performs well for linearly separable data<br>
+✔ Kernel SVM captures non-linear structures<br>
+✔ Only <strong>support vectors</strong> influence the decision boundary<br>
+✔ Margin maximization improves robustness</p>
+<blockquote class="blockquote">
+<p>✨ SVM decisions are driven by geometry, not sheer data volume.</p>
+</blockquote>
+</section>
+<section id="conclusion" class="level2" data-number="1.7">
+<h2 data-number="1.7" class="anchored" data-anchor-id="conclusion"><span class="header-section-number">1.7</span> ✅ Conclusion</h2>
+<p>Support Vector Machines elegantly integrate:</p>
+<ul>
+<li>🧮 <strong>Linear Algebra</strong> — feature representation &amp; hyperplanes<br>
+</li>
+<li>📊 <strong>Statistics</strong> — margin-based generalization<br>
+</li>
+<li>📐 <strong>Calculus</strong> — loss functions &amp; gradients<br>
+</li>
+<li>⚙️ <strong>Optimization</strong> — convex learning guarantees</li>
+</ul>
+<p>SVMs remain a <strong>cornerstone of classical machine learning</strong>, combining strong theory with practical performance.</p>
+
+
+</section>
 </section>
 
 </main> <!-- /main -->

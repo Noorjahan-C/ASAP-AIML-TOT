@@ -6,8 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Noorjahan Chorath">
 
-<title>My Personal Webpage – A Journey Within M</title>
+<title>Support Vector Machines Through the Four Lenses – A Journey Within M</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,41 +20,6 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
-}
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -129,23 +95,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <a class="nav-link active" href="./index.html" aria-current="page"> 
 <span class="menu-text">Home</span></a>
   </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./papers.qmd"> 
-<span class="menu-text">Papers</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./workshops.html"> 
-<span class="menu-text">Workshops</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./blog.qmd"> 
-<span class="menu-text">Blog</span></a>
-  </li>  
-  <li class="nav-item">
-    <span class="nav-link">
-<span class="menu-text">about.qmd</span>
-    </span>
-  </li>  
 </ul>
           </div> <!-- /navcollapse -->
             <div class="quarto-navbar-tools">
@@ -157,7 +106,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">My Personal Webpage</li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Support Vector Machines Through the Four Lenses</li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -225,50 +174,102 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link active" data-scroll-target="#linear-regression">1) Linear Regression</a>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">0.1</span> Introduction</a></li>
+  <li><a href="#the-linear-algebra-perspective" id="toc-the-linear-algebra-perspective" class="nav-link" data-scroll-target="#the-linear-algebra-perspective"><span class="header-section-number">0.2</span> The Linear Algebra Perspective</a>
   <ul class="collapse">
-  <li><a href="#idea" id="toc-idea" class="nav-link" data-scroll-target="#idea">Idea</a></li>
-  <li><a href="#when-to-use" id="toc-when-to-use" class="nav-link" data-scroll-target="#when-to-use">When to use</a></li>
-  <li><a href="#demo-synthetic" id="toc-demo-synthetic" class="nav-link" data-scroll-target="#demo-synthetic">Demo (synthetic)</a></li>
+  <li><a href="#geometry-of-separation" id="toc-geometry-of-separation" class="nav-link" data-scroll-target="#geometry-of-separation"><span class="header-section-number">0.2.1</span> <em>Geometry of Separation</em></a></li>
   </ul></li>
-  <li><a href="#logistic-regression-classification" id="toc-logistic-regression-classification" class="nav-link" data-scroll-target="#logistic-regression-classification">2) Logistic Regression (Classification)</a>
+  <li><a href="#the-statistical-foundation" id="toc-the-statistical-foundation" class="nav-link" data-scroll-target="#the-statistical-foundation"><span class="header-section-number">0.3</span> The Statistical Foundation</a>
   <ul class="collapse">
-  <li><a href="#idea-1" id="toc-idea-1" class="nav-link" data-scroll-target="#idea-1">Idea</a></li>
-  <li><a href="#when-to-use-1" id="toc-when-to-use-1" class="nav-link" data-scroll-target="#when-to-use-1">When to use</a></li>
-  <li><a href="#demo-breast-cancer-dataset" id="toc-demo-breast-cancer-dataset" class="nav-link" data-scroll-target="#demo-breast-cancer-dataset">Demo (Breast Cancer dataset)</a></li>
+  <li><a href="#risk-margin-and-generalization" id="toc-risk-margin-and-generalization" class="nav-link" data-scroll-target="#risk-margin-and-generalization"><span class="header-section-number">0.3.1</span> <em>Risk, Margin, and Generalization</em></a></li>
   </ul></li>
-  <li><a href="#k-nn" id="toc-k-nn" class="nav-link" data-scroll-target="#k-nn">3) k-NN</a>
+  <li><a href="#the-calculus-engine" id="toc-the-calculus-engine" class="nav-link" data-scroll-target="#the-calculus-engine"><span class="header-section-number">0.4</span> The Calculus Engine</a>
   <ul class="collapse">
-  <li><a href="#idea-2" id="toc-idea-2" class="nav-link" data-scroll-target="#idea-2">Idea</a></li>
-  <li><a href="#when-to-use-2" id="toc-when-to-use-2" class="nav-link" data-scroll-target="#when-to-use-2">When to use</a></li>
+  <li><a href="#gradients-and-constraints" id="toc-gradients-and-constraints" class="nav-link" data-scroll-target="#gradients-and-constraints"><span class="header-section-number">0.4.1</span> <em>Gradients and Constraints</em></a></li>
   </ul></li>
-  <li><a href="#decision-tree" id="toc-decision-tree" class="nav-link" data-scroll-target="#decision-tree">4) Decision Tree</a>
+  <li><a href="#the-optimization-strategy" id="toc-the-optimization-strategy" class="nav-link" data-scroll-target="#the-optimization-strategy"><span class="header-section-number">0.5</span> The Optimization Strategy</a>
   <ul class="collapse">
-  <li><a href="#idea-3" id="toc-idea-3" class="nav-link" data-scroll-target="#idea-3">Idea</a></li>
-  <li><a href="#when-to-use-3" id="toc-when-to-use-3" class="nav-link" data-scroll-target="#when-to-use-3">When to use</a></li>
+  <li><a href="#finding-the-maximum-margin-solution" id="toc-finding-the-maximum-margin-solution" class="nav-link" data-scroll-target="#finding-the-maximum-margin-solution"><span class="header-section-number">0.5.1</span> <em>Finding the Maximum-Margin Solution</em></a></li>
   </ul></li>
-  <li><a href="#random-forest" id="toc-random-forest" class="nav-link" data-scroll-target="#random-forest">5) Random Forest</a>
+  <li><a href="#mapping-svm-to-the-four-pillars" id="toc-mapping-svm-to-the-four-pillars" class="nav-link" data-scroll-target="#mapping-svm-to-the-four-pillars"><span class="header-section-number">0.6</span> Mapping SVM to the Four Pillars</a></li>
+  <li><a href="#curriculum-alignment" id="toc-curriculum-alignment" class="nav-link" data-scroll-target="#curriculum-alignment"><span class="header-section-number">0.7</span> Curriculum Alignment</a>
   <ul class="collapse">
-  <li><a href="#idea-4" id="toc-idea-4" class="nav-link" data-scroll-target="#idea-4">Idea</a></li>
-  <li><a href="#when-to-use-4" id="toc-when-to-use-4" class="nav-link" data-scroll-target="#when-to-use-4">When to use</a></li>
+  <li><a href="#core-machine-learning" id="toc-core-machine-learning" class="nav-link" data-scroll-target="#core-machine-learning"><span class="header-section-number">0.7.1</span> Core Machine Learning</a></li>
+  <li><a href="#deep-learning" id="toc-deep-learning" class="nav-link" data-scroll-target="#deep-learning"><span class="header-section-number">0.7.2</span> Deep Learning</a></li>
+  <li><a href="#bayesian-and-statistical-learning" id="toc-bayesian-and-statistical-learning" class="nav-link" data-scroll-target="#bayesian-and-statistical-learning"><span class="header-section-number">0.7.3</span> Bayesian and Statistical Learning</a></li>
+  <li><a href="#optimization-theory-and-deployment" id="toc-optimization-theory-and-deployment" class="nav-link" data-scroll-target="#optimization-theory-and-deployment"><span class="header-section-number">0.7.4</span> Optimization Theory and Deployment</a></li>
   </ul></li>
-  <li><a href="#support-vector-machine-svm" id="toc-support-vector-machine-svm" class="nav-link" data-scroll-target="#support-vector-machine-svm">6) Support Vector Machine (SVM)</a>
+  <li><a href="#introduction-1" id="toc-introduction-1" class="nav-link" data-scroll-target="#introduction-1"><span class="header-section-number">0.8</span> Introduction</a></li>
+  <li><a href="#the-linear-algebra-perspective-1" id="toc-the-linear-algebra-perspective-1" class="nav-link" data-scroll-target="#the-linear-algebra-perspective-1"><span class="header-section-number">0.9</span> The Linear Algebra Perspective</a>
   <ul class="collapse">
-  <li><a href="#idea-5" id="toc-idea-5" class="nav-link" data-scroll-target="#idea-5">Idea</a></li>
-  <li><a href="#when-to-use-5" id="toc-when-to-use-5" class="nav-link" data-scroll-target="#when-to-use-5">When to use</a></li>
+  <li><a href="#geometry-of-separation-1" id="toc-geometry-of-separation-1" class="nav-link" data-scroll-target="#geometry-of-separation-1"><span class="header-section-number">0.9.1</span> <em>Geometry of Separation</em></a></li>
   </ul></li>
-  <li><a href="#naive-bayes" id="toc-naive-bayes" class="nav-link" data-scroll-target="#naive-bayes">7) Naive Bayes</a>
+  <li><a href="#the-statistical-foundation-1" id="toc-the-statistical-foundation-1" class="nav-link" data-scroll-target="#the-statistical-foundation-1"><span class="header-section-number">0.10</span> The Statistical Foundation</a>
   <ul class="collapse">
-  <li><a href="#idea-6" id="toc-idea-6" class="nav-link" data-scroll-target="#idea-6">Idea</a></li>
-  <li><a href="#when-to-use-6" id="toc-when-to-use-6" class="nav-link" data-scroll-target="#when-to-use-6">When to use</a></li>
+  <li><a href="#risk-margin-and-generalization-1" id="toc-risk-margin-and-generalization-1" class="nav-link" data-scroll-target="#risk-margin-and-generalization-1"><span class="header-section-number">0.10.1</span> <em>Risk, Margin, and Generalization</em></a></li>
   </ul></li>
-  <li><a href="#k-means-clustering" id="toc-k-means-clustering" class="nav-link" data-scroll-target="#k-means-clustering">8) k-Means (Clustering)</a>
+  <li><a href="#the-calculus-engine-1" id="toc-the-calculus-engine-1" class="nav-link" data-scroll-target="#the-calculus-engine-1"><span class="header-section-number">0.11</span> The Calculus Engine</a>
   <ul class="collapse">
-  <li><a href="#idea-7" id="toc-idea-7" class="nav-link" data-scroll-target="#idea-7">Idea</a></li>
-  <li><a href="#when-to-use-7" id="toc-when-to-use-7" class="nav-link" data-scroll-target="#when-to-use-7">When to use</a></li>
+  <li><a href="#gradients-and-constraints-1" id="toc-gradients-and-constraints-1" class="nav-link" data-scroll-target="#gradients-and-constraints-1"><span class="header-section-number">0.11.1</span> <em>Gradients and Constraints</em></a></li>
   </ul></li>
-  <li><a href="#quick-comparison-table" id="toc-quick-comparison-table" class="nav-link" data-scroll-target="#quick-comparison-table">Quick Comparison Table</a></li>
-  <li><a href="#homework-ideas" id="toc-homework-ideas" class="nav-link" data-scroll-target="#homework-ideas">Homework Ideas</a></li>
+  <li><a href="#the-optimization-strategy-1" id="toc-the-optimization-strategy-1" class="nav-link" data-scroll-target="#the-optimization-strategy-1"><span class="header-section-number">0.12</span> The Optimization Strategy</a>
+  <ul class="collapse">
+  <li><a href="#finding-the-maximum-margin-solution-1" id="toc-finding-the-maximum-margin-solution-1" class="nav-link" data-scroll-target="#finding-the-maximum-margin-solution-1"><span class="header-section-number">0.12.1</span> <em>Finding the Maximum-Margin Solution</em></a></li>
+  </ul></li>
+  <li><a href="#mapping-svm-to-the-four-pillars-1" id="toc-mapping-svm-to-the-four-pillars-1" class="nav-link" data-scroll-target="#mapping-svm-to-the-four-pillars-1"><span class="header-section-number">0.13</span> Mapping SVM to the Four Pillars</a></li>
+  <li><a href="#curriculum-alignment-1" id="toc-curriculum-alignment-1" class="nav-link" data-scroll-target="#curriculum-alignment-1"><span class="header-section-number">0.14</span> Curriculum Alignment</a>
+  <ul class="collapse">
+  <li><a href="#core-machine-learning-1" id="toc-core-machine-learning-1" class="nav-link" data-scroll-target="#core-machine-learning-1"><span class="header-section-number">0.14.1</span> Core Machine Learning</a></li>
+  <li><a href="#deep-learning-1" id="toc-deep-learning-1" class="nav-link" data-scroll-target="#deep-learning-1"><span class="header-section-number">0.14.2</span> Deep Learning</a></li>
+  <li><a href="#bayesian-and-statistical-learning-1" id="toc-bayesian-and-statistical-learning-1" class="nav-link" data-scroll-target="#bayesian-and-statistical-learning-1"><span class="header-section-number">0.14.3</span> Bayesian and Statistical Learning</a></li>
+  <li><a href="#optimization-theory-and-deployment-1" id="toc-optimization-theory-and-deployment-1" class="nav-link" data-scroll-target="#optimization-theory-and-deployment-1"><span class="header-section-number">0.14.4</span> Optimization Theory and Deployment</a></li>
+  </ul></li>
+  <li><a href="#key-takeaway" id="toc-key-takeaway" class="nav-link" data-scroll-target="#key-takeaway"><span class="header-section-number">0.15</span> Key Takeaway</a></li>
+  <li><a href="#key-takeaway-1" id="toc-key-takeaway-1" class="nav-link" data-scroll-target="#key-takeaway-1"><span class="header-section-number">0.16</span> Key Takeaway</a></li>
+  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression"><span class="header-section-number">1</span> 1) Linear Regression</a>
+  <ul class="collapse">
+  <li><a href="#idea" id="toc-idea" class="nav-link" data-scroll-target="#idea"><span class="header-section-number">1.1</span> Idea</a></li>
+  <li><a href="#when-to-use" id="toc-when-to-use" class="nav-link" data-scroll-target="#when-to-use"><span class="header-section-number">1.2</span> When to use</a></li>
+  <li><a href="#demo-synthetic" id="toc-demo-synthetic" class="nav-link" data-scroll-target="#demo-synthetic"><span class="header-section-number">1.3</span> Demo (synthetic)</a></li>
+  </ul></li>
+  <li><a href="#logistic-regression-classification" id="toc-logistic-regression-classification" class="nav-link" data-scroll-target="#logistic-regression-classification"><span class="header-section-number">2</span> 2) Logistic Regression (Classification)</a>
+  <ul class="collapse">
+  <li><a href="#idea-1" id="toc-idea-1" class="nav-link" data-scroll-target="#idea-1"><span class="header-section-number">2.1</span> Idea</a></li>
+  <li><a href="#when-to-use-1" id="toc-when-to-use-1" class="nav-link" data-scroll-target="#when-to-use-1"><span class="header-section-number">2.2</span> When to use</a></li>
+  <li><a href="#demo-breast-cancer-dataset" id="toc-demo-breast-cancer-dataset" class="nav-link" data-scroll-target="#demo-breast-cancer-dataset"><span class="header-section-number">2.3</span> Demo (Breast Cancer dataset)</a></li>
+  </ul></li>
+  <li><a href="#k-nn" id="toc-k-nn" class="nav-link" data-scroll-target="#k-nn"><span class="header-section-number">3</span> 3) k-NN</a>
+  <ul class="collapse">
+  <li><a href="#idea-2" id="toc-idea-2" class="nav-link" data-scroll-target="#idea-2"><span class="header-section-number">3.1</span> Idea</a></li>
+  <li><a href="#when-to-use-2" id="toc-when-to-use-2" class="nav-link" data-scroll-target="#when-to-use-2"><span class="header-section-number">3.2</span> When to use</a></li>
+  </ul></li>
+  <li><a href="#decision-tree" id="toc-decision-tree" class="nav-link" data-scroll-target="#decision-tree"><span class="header-section-number">4</span> 4) Decision Tree</a>
+  <ul class="collapse">
+  <li><a href="#idea-3" id="toc-idea-3" class="nav-link" data-scroll-target="#idea-3"><span class="header-section-number">4.1</span> Idea</a></li>
+  <li><a href="#when-to-use-3" id="toc-when-to-use-3" class="nav-link" data-scroll-target="#when-to-use-3"><span class="header-section-number">4.2</span> When to use</a></li>
+  </ul></li>
+  <li><a href="#random-forest" id="toc-random-forest" class="nav-link" data-scroll-target="#random-forest"><span class="header-section-number">5</span> 5) Random Forest</a>
+  <ul class="collapse">
+  <li><a href="#idea-4" id="toc-idea-4" class="nav-link" data-scroll-target="#idea-4"><span class="header-section-number">5.1</span> Idea</a></li>
+  <li><a href="#when-to-use-4" id="toc-when-to-use-4" class="nav-link" data-scroll-target="#when-to-use-4"><span class="header-section-number">5.2</span> When to use</a></li>
+  </ul></li>
+  <li><a href="#support-vector-machine-svm" id="toc-support-vector-machine-svm" class="nav-link" data-scroll-target="#support-vector-machine-svm"><span class="header-section-number">6</span> 6) Support Vector Machine (SVM)</a>
+  <ul class="collapse">
+  <li><a href="#idea-5" id="toc-idea-5" class="nav-link" data-scroll-target="#idea-5"><span class="header-section-number">6.1</span> Idea</a></li>
+  <li><a href="#when-to-use-5" id="toc-when-to-use-5" class="nav-link" data-scroll-target="#when-to-use-5"><span class="header-section-number">6.2</span> When to use</a></li>
+  </ul></li>
+  <li><a href="#naive-bayes" id="toc-naive-bayes" class="nav-link" data-scroll-target="#naive-bayes"><span class="header-section-number">7</span> 7) Naive Bayes</a>
+  <ul class="collapse">
+  <li><a href="#idea-6" id="toc-idea-6" class="nav-link" data-scroll-target="#idea-6"><span class="header-section-number">7.1</span> Idea</a></li>
+  <li><a href="#when-to-use-6" id="toc-when-to-use-6" class="nav-link" data-scroll-target="#when-to-use-6"><span class="header-section-number">7.2</span> When to use</a></li>
+  </ul></li>
+  <li><a href="#k-means-clustering" id="toc-k-means-clustering" class="nav-link" data-scroll-target="#k-means-clustering"><span class="header-section-number">8</span> 8) k-Means (Clustering)</a>
+  <ul class="collapse">
+  <li><a href="#idea-7" id="toc-idea-7" class="nav-link" data-scroll-target="#idea-7"><span class="header-section-number">8.1</span> Idea</a></li>
+  <li><a href="#when-to-use-7" id="toc-when-to-use-7" class="nav-link" data-scroll-target="#when-to-use-7"><span class="header-section-number">8.2</span> When to use</a></li>
+  </ul></li>
+  <li><a href="#quick-comparison-table" id="toc-quick-comparison-table" class="nav-link" data-scroll-target="#quick-comparison-table"><span class="header-section-number">9</span> Quick Comparison Table</a></li>
+  <li><a href="#homework-ideas" id="toc-homework-ideas" class="nav-link" data-scroll-target="#homework-ideas"><span class="header-section-number">10</span> Homework Ideas</a></li>
   </ul>
 </nav>
     </div>
@@ -277,13 +278,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">My Personal Webpage</h1>
+<h1 class="title">Support Vector Machines Through the Four Lenses</h1>
+<p class="subtitle lead">Deconstructing Intelligence Using Mathematical Foundations</p>
 </div>
 
 
 
 <div class="quarto-title-meta">
 
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Noorjahan Chorath </p>
+          </div>
+  </div>
     
   
     
@@ -294,70 +302,238 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
+<section id="introduction" class="level2" data-number="0.1">
+<h2 data-number="0.1" class="anchored" data-anchor-id="introduction"><span class="header-section-number">0.1</span> Introduction</h2>
+<p>Support Vector Machines (SVMs) are among the most powerful and mathematically elegant machine learning algorithms.<br>
+By examining SVM through the four foundational pillars—<strong>Linear Algebra, Statistics, Calculus, and Optimization</strong>—we uncover the deep mathematical structure that enables robust and generalizable learning.</p>
+<p>This deconstruction demonstrates that even advanced AI systems are built upon a small set of fundamental mathematical principles.</p>
+<hr>
+</section>
+<section id="the-linear-algebra-perspective" class="level2" data-number="0.2">
+<h2 data-number="0.2" class="anchored" data-anchor-id="the-linear-algebra-perspective"><span class="header-section-number">0.2</span> The Linear Algebra Perspective</h2>
+<section id="geometry-of-separation" class="level3" data-number="0.2.1">
+<h3 data-number="0.2.1" class="anchored" data-anchor-id="geometry-of-separation"><span class="header-section-number">0.2.1</span> <em>Geometry of Separation</em></h3>
+<p>From a linear algebra viewpoint, Support Vector Machines treat data as <strong>points in a high-dimensional vector space</strong>. Each input sample is represented as a feature vector, transforming learning into a problem of <strong>geometric separation</strong>.</p>
+<p>At the core of SVM lies the concept of a <strong>hyperplane</strong>, defined by a weight vector and a bias term. This hyperplane acts as a decision boundary that separates data points belonging to different classes. Linear algebra governs how this boundary is oriented and positioned through operations such as dot products, vector norms, and projections.</p>
+<p>A key innovation of SVM is the <strong>margin</strong>—the distance between the hyperplane and the nearest data points from each class. These nearest points, known as <strong>support vectors</strong>, uniquely define the model. As a result, SVM decisions depend on a small subset of critical data points rather than the entire dataset.</p>
+<p>When data is not linearly separable, SVMs employ <strong>kernel functions</strong> that implicitly map data into higher-dimensional spaces, where linear separation becomes feasible. This highlights the expressive power of linear algebra in modern machine learning.</p>
+<hr>
+</section>
+</section>
+<section id="the-statistical-foundation" class="level2" data-number="0.3">
+<h2 data-number="0.3" class="anchored" data-anchor-id="the-statistical-foundation"><span class="header-section-number">0.3</span> The Statistical Foundation</h2>
+<section id="risk-margin-and-generalization" class="level3" data-number="0.3.1">
+<h3 data-number="0.3.1" class="anchored" data-anchor-id="risk-margin-and-generalization"><span class="header-section-number">0.3.1</span> <em>Risk, Margin, and Generalization</em></h3>
+<p>Statistics provides the framework for understanding what makes an SVM model effective. Unlike regression models that minimize squared error, SVMs rely on the <strong>hinge loss</strong>, which penalizes incorrect classifications and points that lie too close to the decision boundary.</p>
+<p>A central statistical concept in SVM is <strong>regularization</strong>, which balances two competing objectives:</p>
+<ul>
+<li>Maximizing the margin (model simplicity)</li>
+<li>Minimizing classification errors (data fit)</li>
+</ul>
+<p>This balance reflects the classical <strong>bias–variance trade-off</strong>. By controlling the regularization parameter, SVMs reduce overfitting while maintaining strong predictive performance.</p>
+<p>Rather than modeling class probabilities explicitly, SVMs are grounded in <strong>statistical learning theory</strong> and the principle of <strong>structural risk minimization</strong>, ensuring robustness even in high-dimensional feature spaces.</p>
+<hr>
+</section>
+</section>
+<section id="the-calculus-engine" class="level2" data-number="0.4">
+<h2 data-number="0.4" class="anchored" data-anchor-id="the-calculus-engine"><span class="header-section-number">0.4</span> The Calculus Engine</h2>
+<section id="gradients-and-constraints" class="level3" data-number="0.4.1">
+<h3 data-number="0.4.1" class="anchored" data-anchor-id="gradients-and-constraints"><span class="header-section-number">0.4.1</span> <em>Gradients and Constraints</em></h3>
+<p>Although often presented geometrically, SVM training relies heavily on calculus. The learning objective is formulated as a constrained optimization problem, combining margin maximization with penalty terms for misclassification.</p>
+<p>Calculus enables this formulation through:</p>
+<ul>
+<li><strong>Gradients</strong>, which describe how the objective function changes</li>
+<li><strong>Lagrange multipliers</strong>, which incorporate constraints directly into the optimization process</li>
+</ul>
+<p>These tools transform intuitive geometric goals into a mathematically solvable problem. Even when closed-form solvers or quadratic programming techniques are used, calculus remains the underlying engine that guarantees correctness and convergence.</p>
+<hr>
+</section>
+</section>
+<section id="the-optimization-strategy" class="level2" data-number="0.5">
+<h2 data-number="0.5" class="anchored" data-anchor-id="the-optimization-strategy"><span class="header-section-number">0.5</span> The Optimization Strategy</h2>
+<section id="finding-the-maximum-margin-solution" class="level3" data-number="0.5.1">
+<h3 data-number="0.5.1" class="anchored" data-anchor-id="finding-the-maximum-margin-solution"><span class="header-section-number">0.5.1</span> <em>Finding the Maximum-Margin Solution</em></h3>
+<p>Optimization unifies all previous pillars into a practical learning algorithm. The SVM objective function is <strong>convex</strong>, meaning it has a single global minimum—an essential property for stable and reliable learning.</p>
+<p>Optimization theory governs:</p>
+<ul>
+<li>How constraints are enforced</li>
+<li>Why convergence is guaranteed</li>
+<li>How efficiently solutions are found</li>
+</ul>
+<p>Modern SVM implementations rely on <strong>quadratic programming</strong> and <strong>dual optimization</strong> methods, enabling efficient training even for large-scale datasets. The final model is defined entirely by its support vectors, making SVM both computationally efficient and interpretable.</p>
+<hr>
+</section>
+</section>
+<section id="mapping-svm-to-the-four-pillars" class="level2" data-number="0.6">
+<h2 data-number="0.6" class="anchored" data-anchor-id="mapping-svm-to-the-four-pillars"><span class="header-section-number">0.6</span> Mapping SVM to the Four Pillars</h2>
+<p>Support Vector Machines demonstrate a seamless integration of all four foundational pillars:</p>
+<ul>
+<li><strong>Linear Algebra</strong>: Feature spaces, hyperplanes, margins, kernels<br>
+</li>
+<li><strong>Statistics</strong>: Generalization, regularization, risk minimization<br>
+</li>
+<li><strong>Calculus</strong>: Gradients, constrained optimization, Lagrangians<br>
+</li>
+<li><strong>Optimization</strong>: Convex solvers, convergence, efficiency</li>
+</ul>
+<p>This unified view reveals SVM as a mathematically disciplined system rather than a black-box classifier.</p>
+<hr>
+</section>
+<section id="curriculum-alignment" class="level2" data-number="0.7">
+<h2 data-number="0.7" class="anchored" data-anchor-id="curriculum-alignment"><span class="header-section-number">0.7</span> Curriculum Alignment</h2>
+<section id="core-machine-learning" class="level3" data-number="0.7.1">
+<h3 data-number="0.7.1" class="anchored" data-anchor-id="core-machine-learning"><span class="header-section-number">0.7.1</span> Core Machine Learning</h3>
+<p>Support Vector Machines act as a bridge between simple linear models and advanced classifiers, drawing equally from all four pillars.</p>
+</section>
+<section id="deep-learning" class="level3" data-number="0.7.2">
+<h3 data-number="0.7.2" class="anchored" data-anchor-id="deep-learning"><span class="header-section-number">0.7.2</span> Deep Learning</h3>
+<p>Concepts such as margins, regularization, and optimization directly influence modern neural network training and loss design.</p>
+</section>
+<section id="bayesian-and-statistical-learning" class="level3" data-number="0.7.3">
+<h3 data-number="0.7.3" class="anchored" data-anchor-id="bayesian-and-statistical-learning"><span class="header-section-number">0.7.3</span> Bayesian and Statistical Learning</h3>
+<p>Although SVMs are not probabilistic, their grounding in statistical learning theory provides a strong contrast to Bayesian approaches.</p>
+</section>
+<section id="optimization-theory-and-deployment" class="level3" data-number="0.7.4">
+<h3 data-number="0.7.4" class="anchored" data-anchor-id="optimization-theory-and-deployment"><span class="header-section-number">0.7.4</span> Optimization Theory and Deployment</h3>
+<p>Kernel selection, solver efficiency, and scalability highlight real-world optimization challenges encountered in AI systems.</p>
+</section>
+</section>
+<section id="introduction-1" class="level2" data-number="0.8">
+<h2 data-number="0.8" class="anchored" data-anchor-id="introduction-1"><span class="header-section-number">0.8</span> Introduction</h2>
+<p>Support Vector Machines (SVMs) are among the most powerful and mathematically elegant machine learning algorithms.<br>
+By examining SVM through the four foundational pillars—<strong>Linear Algebra, Statistics, Calculus, and Optimization</strong>—we uncover the deep mathematical structure that enables robust and generalizable learning.</p>
+<p>This deconstruction demonstrates that even advanced AI systems are built upon a small set of fundamental mathematical principles.</p>
+<hr>
+</section>
+<section id="the-linear-algebra-perspective-1" class="level2" data-number="0.9">
+<h2 data-number="0.9" class="anchored" data-anchor-id="the-linear-algebra-perspective-1"><span class="header-section-number">0.9</span> The Linear Algebra Perspective</h2>
+<section id="geometry-of-separation-1" class="level3" data-number="0.9.1">
+<h3 data-number="0.9.1" class="anchored" data-anchor-id="geometry-of-separation-1"><span class="header-section-number">0.9.1</span> <em>Geometry of Separation</em></h3>
+<p>From a linear algebra viewpoint, Support Vector Machines treat data as <strong>points in a high-dimensional vector space</strong>. Each input sample is represented as a feature vector, transforming learning into a problem of <strong>geometric separation</strong>.</p>
+<p>At the core of SVM lies the concept of a <strong>hyperplane</strong>, defined by a weight vector and a bias term. This hyperplane acts as a decision boundary that separates data points belonging to different classes. Linear algebra governs how this boundary is oriented and positioned through operations such as dot products, vector norms, and projections.</p>
+<p>A key innovation of SVM is the <strong>margin</strong>—the distance between the hyperplane and the nearest data points from each class. These nearest points, known as <strong>support vectors</strong>, uniquely define the model. As a result, SVM decisions depend on a small subset of critical data points rather than the entire dataset.</p>
+<p>When data is not linearly separable, SVMs employ <strong>kernel functions</strong> that implicitly map data into higher-dimensional spaces, where linear separation becomes feasible. This highlights the expressive power of linear algebra in modern machine learning.</p>
+<hr>
+</section>
+</section>
+<section id="the-statistical-foundation-1" class="level2" data-number="0.10">
+<h2 data-number="0.10" class="anchored" data-anchor-id="the-statistical-foundation-1"><span class="header-section-number">0.10</span> The Statistical Foundation</h2>
+<section id="risk-margin-and-generalization-1" class="level3" data-number="0.10.1">
+<h3 data-number="0.10.1" class="anchored" data-anchor-id="risk-margin-and-generalization-1"><span class="header-section-number">0.10.1</span> <em>Risk, Margin, and Generalization</em></h3>
+<p>Statistics provides the framework for understanding what makes an SVM model effective. Unlike regression models that minimize squared error, SVMs rely on the <strong>hinge loss</strong>, which penalizes incorrect classifications and points that lie too close to the decision boundary.</p>
+<p>A central statistical concept in SVM is <strong>regularization</strong>, which balances two competing objectives:</p>
+<ul>
+<li>Maximizing the margin (model simplicity)</li>
+<li>Minimizing classification errors (data fit)</li>
+</ul>
+<p>This balance reflects the classical <strong>bias–variance trade-off</strong>. By controlling the regularization parameter, SVMs reduce overfitting while maintaining strong predictive performance.</p>
+<p>Rather than modeling class probabilities explicitly, SVMs are grounded in <strong>statistical learning theory</strong> and the principle of <strong>structural risk minimization</strong>, ensuring robustness even in high-dimensional feature spaces.</p>
+<hr>
+</section>
+</section>
+<section id="the-calculus-engine-1" class="level2" data-number="0.11">
+<h2 data-number="0.11" class="anchored" data-anchor-id="the-calculus-engine-1"><span class="header-section-number">0.11</span> The Calculus Engine</h2>
+<section id="gradients-and-constraints-1" class="level3" data-number="0.11.1">
+<h3 data-number="0.11.1" class="anchored" data-anchor-id="gradients-and-constraints-1"><span class="header-section-number">0.11.1</span> <em>Gradients and Constraints</em></h3>
+<p>Although often presented geometrically, SVM training relies heavily on calculus. The learning objective is formulated as a constrained optimization problem, combining margin maximization with penalty terms for misclassification.</p>
+<p>Calculus enables this formulation through:</p>
+<ul>
+<li><strong>Gradients</strong>, which describe how the objective function changes</li>
+<li><strong>Lagrange multipliers</strong>, which incorporate constraints directly into the optimization process</li>
+</ul>
+<p>These tools transform intuitive geometric goals into a mathematically solvable problem. Even when closed-form solvers or quadratic programming techniques are used, calculus remains the underlying engine that guarantees correctness and convergence.</p>
+<hr>
+</section>
+</section>
+<section id="the-optimization-strategy-1" class="level2" data-number="0.12">
+<h2 data-number="0.12" class="anchored" data-anchor-id="the-optimization-strategy-1"><span class="header-section-number">0.12</span> The Optimization Strategy</h2>
+<section id="finding-the-maximum-margin-solution-1" class="level3" data-number="0.12.1">
+<h3 data-number="0.12.1" class="anchored" data-anchor-id="finding-the-maximum-margin-solution-1"><span class="header-section-number">0.12.1</span> <em>Finding the Maximum-Margin Solution</em></h3>
+<p>Optimization unifies all previous pillars into a practical learning algorithm. The SVM objective function is <strong>convex</strong>, meaning it has a single global minimum—an essential property for stable and reliable learning.</p>
+<p>Optimization theory governs:</p>
+<ul>
+<li>How constraints are enforced</li>
+<li>Why convergence is guaranteed</li>
+<li>How efficiently solutions are found</li>
+</ul>
+<p>Modern SVM implementations rely on <strong>quadratic programming</strong> and <strong>dual optimization</strong> methods, enabling efficient training even for large-scale datasets. The final model is defined entirely by its support vectors, making SVM both computationally efficient and interpretable.</p>
+<hr>
+</section>
+</section>
+<section id="mapping-svm-to-the-four-pillars-1" class="level2" data-number="0.13">
+<h2 data-number="0.13" class="anchored" data-anchor-id="mapping-svm-to-the-four-pillars-1"><span class="header-section-number">0.13</span> Mapping SVM to the Four Pillars</h2>
+<p>Support Vector Machines demonstrate a seamless integration of all four foundational pillars:</p>
+<ul>
+<li><strong>Linear Algebra</strong>: Feature spaces, hyperplanes, margins, kernels<br>
+</li>
+<li><strong>Statistics</strong>: Generalization, regularization, risk minimization<br>
+</li>
+<li><strong>Calculus</strong>: Gradients, constrained optimization, Lagrangians<br>
+</li>
+<li><strong>Optimization</strong>: Convex solvers, convergence, efficiency</li>
+</ul>
+<p>This unified view reveals SVM as a mathematically disciplined system rather than a black-box classifier.</p>
+<hr>
+</section>
+<section id="curriculum-alignment-1" class="level2" data-number="0.14">
+<h2 data-number="0.14" class="anchored" data-anchor-id="curriculum-alignment-1"><span class="header-section-number">0.14</span> Curriculum Alignment</h2>
+<section id="core-machine-learning-1" class="level3" data-number="0.14.1">
+<h3 data-number="0.14.1" class="anchored" data-anchor-id="core-machine-learning-1"><span class="header-section-number">0.14.1</span> Core Machine Learning</h3>
+<p>Support Vector Machines act as a bridge between simple linear models and advanced classifiers, drawing equally from all four pillars.</p>
+</section>
+<section id="deep-learning-1" class="level3" data-number="0.14.2">
+<h3 data-number="0.14.2" class="anchored" data-anchor-id="deep-learning-1"><span class="header-section-number">0.14.2</span> Deep Learning</h3>
+<p>Concepts such as margins, regularization, and optimization directly influence modern neural network training and loss design.</p>
+</section>
+<section id="bayesian-and-statistical-learning-1" class="level3" data-number="0.14.3">
+<h3 data-number="0.14.3" class="anchored" data-anchor-id="bayesian-and-statistical-learning-1"><span class="header-section-number">0.14.3</span> Bayesian and Statistical Learning</h3>
+<p>Although SVMs are not probabilistic, their grounding in statistical learning theory provides a strong contrast to Bayesian approaches.</p>
+</section>
+<section id="optimization-theory-and-deployment-1" class="level3" data-number="0.14.4">
+<h3 data-number="0.14.4" class="anchored" data-anchor-id="optimization-theory-and-deployment-1"><span class="header-section-number">0.14.4</span> Optimization Theory and Deployment</h3>
+<p>Kernel selection, solver efficiency, and scalability highlight real-world optimization challenges encountered in AI systems.</p>
+<hr>
+</section>
+</section>
+<section id="key-takeaway" class="level2" data-number="0.15">
+<h2 data-number="0.15" class="anchored" data-anchor-id="key-takeaway"><span class="header-section-number">0.15</span> Key Takeaway</h2>
+<p>Support Vector Machines demonstrate that <strong>intelligence emerges from the disciplined interaction of mathematics</strong>.<br>
+By analyzing SVM through the four lenses, we uncover the same foundational structure that underpins both classical machine learning algorithms and modern AI systems.</p>
+<hr>
+</section>
+<section id="key-takeaway-1" class="level2" data-number="0.16">
+<h2 data-number="0.16" class="anchored" data-anchor-id="key-takeaway-1"><span class="header-section-number">0.16</span> Key Takeaway</h2>
+<p>Support Vector Machines demonstrate that <strong>intelligence emerges from the disciplined interaction of mathematics</strong>.<br>
+By analyzing SVM through the four lenses, we uncover the same foundational structure that underpins both classical machine learning algorithms and modern AI systems.</p>
+<hr>
 <p><img src="images/user_image.png" class="img-fluid" alt="alt"> # Setup</p>
-<div id="e320180a" class="cell" data-execution_count="1">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Hi"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b9c5bd42" class="cell" data-execution_count="1">
 <div class="cell-output cell-output-stdout">
 <pre><code>Hi</code></pre>
 </div>
 </div>
-<div id="b80f7be8" class="cell" data-execution_count="2">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.preprocessing <span class="im">import</span> StandardScaler</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.pipeline <span class="im">import</span> Pipeline</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score, f1_score, confusion_matrix, classification_report</span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>x<span class="op">=</span><span class="dv">10</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="50039aa1" class="cell" data-execution_count="2">
 <div class="cell-output cell-output-stdout">
 <pre><code>10</code></pre>
 </div>
 </div>
-<section id="linear-regression" class="level1">
-<h1>1) Linear Regression</h1>
-<section id="idea" class="level2">
-<h2 class="anchored" data-anchor-id="idea">Idea</h2>
+</section>
+<section id="linear-regression" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> 1) Linear Regression</h1>
+<section id="idea" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="idea"><span class="header-section-number">1.1</span> Idea</h2>
 <p>Predict a continuous value using a straight-line relationship.</p>
 </section>
-<section id="when-to-use" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-use">When to use</h2>
+<section id="when-to-use" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="when-to-use"><span class="header-section-number">1.2</span> When to use</h2>
 <ul>
 <li>House price, marks prediction, trend estimation</li>
 <li>Baseline model for regression</li>
 </ul>
 </section>
-<section id="demo-synthetic" class="level2">
-<h2 class="anchored" data-anchor-id="demo-synthetic">Demo (synthetic)</h2>
-<div id="516660aa" class="cell" data-execution_count="3">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LinearRegression</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error, r2_score</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Data</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>rng <span class="op">=</span> np.random.default_rng(<span class="dv">7</span>)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>X <span class="op">=</span> rng.uniform(<span class="dv">0</span>, <span class="dv">10</span>, size<span class="op">=</span>(<span class="dv">120</span>, <span class="dv">1</span>))</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>y <span class="op">=</span> <span class="fl">3.5</span><span class="op">*</span>X.squeeze() <span class="op">+</span> <span class="dv">8</span> <span class="op">+</span> rng.normal(<span class="dv">0</span>, <span class="fl">2.0</span>, size<span class="op">=</span><span class="dv">120</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>model <span class="op">=</span> LinearRegression()</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>model.fit(X_train, y_train)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> model.predict(X_test)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"MSE:"</span>, mean_squared_error(y_test, pred))</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"R2 :"</span>, r2_score(y_test, pred))</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_test, y_test)</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>plt.scatter(X_test, pred)</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>plt.xlabel(<span class="st">"X"</span>)<span class="op">;</span> plt.ylabel(<span class="st">"y"</span>)</span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"Linear Regression: true vs predicted"</span>)</span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="demo-synthetic" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="demo-synthetic"><span class="header-section-number">1.3</span> Demo (synthetic)</h2>
+<div id="6026518e" class="cell" data-execution_count="3">
 <div class="cell-output cell-output-stdout">
 <pre><code>MSE: 3.4522247956202796
 R2 : 0.942791028778986</code></pre>
@@ -372,41 +548,22 @@ R2 : 0.942791028778986</code></pre>
 </div>
 </section>
 </section>
-<section id="logistic-regression-classification" class="level1">
-<h1>2) Logistic Regression (Classification)</h1>
-<section id="idea-1" class="level2">
-<h2 class="anchored" data-anchor-id="idea-1">Idea</h2>
+<section id="logistic-regression-classification" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> 2) Logistic Regression (Classification)</h1>
+<section id="idea-1" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="idea-1"><span class="header-section-number">2.1</span> Idea</h2>
 <p>Predict class probability using a sigmoid; good baseline for binary/multiclass.</p>
 </section>
-<section id="when-to-use-1" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-use-1">When to use</h2>
+<section id="when-to-use-1" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="when-to-use-1"><span class="header-section-number">2.2</span> When to use</h2>
 <ul>
 <li>Spam vs not spam, disease yes/no</li>
 <li>Highly interpretable baseline</li>
 </ul>
 </section>
-<section id="demo-breast-cancer-dataset" class="level2">
-<h2 class="anchored" data-anchor-id="demo-breast-cancer-dataset">Demo (Breast Cancer dataset)</h2>
-<div id="849f8e00" class="cell" data-execution_count="4">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> load_breast_cancer</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>data <span class="op">=</span> load_breast_cancer()</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>X, y <span class="op">=</span> data.data, data.target</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>X_train, X_test, y_train, y_test <span class="op">=</span> train_test_split(X, y, test_size<span class="op">=</span><span class="fl">0.2</span>, stratify<span class="op">=</span>y, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>clf <span class="op">=</span> Pipeline([</span>
-<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>(<span class="st">"scaler"</span>, StandardScaler()),</span>
-<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>(<span class="st">"lr"</span>, LogisticRegression(max_iter<span class="op">=</span><span class="dv">5000</span>))</span>
-<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a>clf.fit(X_train, y_train)</span>
-<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> clf.predict(X_test)</span>
-<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Accuracy:"</span>, accuracy_score(y_test, pred))</span>
-<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"F1      :"</span>, f1_score(y_test, pred))</span>
-<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(confusion_matrix(y_test, pred))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<section id="demo-breast-cancer-dataset" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="demo-breast-cancer-dataset"><span class="header-section-number">2.3</span> Demo (Breast Cancer dataset)</h2>
+<div id="98f0d5a7" class="cell" data-execution_count="4">
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.9824561403508771
 F1      : 0.9861111111111112
@@ -416,31 +573,19 @@ F1      : 0.9861111111111112
 </div>
 </section>
 </section>
-<section id="k-nn" class="level1">
-<h1>3) k-NN</h1>
-<section id="idea-2" class="level2">
-<h2 class="anchored" data-anchor-id="idea-2">Idea</h2>
+<section id="k-nn" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> 3) k-NN</h1>
+<section id="idea-2" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="idea-2"><span class="header-section-number">3.1</span> Idea</h2>
 <p>A point is classified by the majority label among its nearest neighbors.</p>
 </section>
-<section id="when-to-use-2" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-use-2">When to use</h2>
+<section id="when-to-use-2" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="when-to-use-2"><span class="header-section-number">3.2</span> When to use</h2>
 <ul>
 <li>Small/medium datasets</li>
 <li>Nonlinear boundaries, simple intuition</li>
 </ul>
-<div id="0aa47451" class="cell" data-execution_count="5">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.neighbors <span class="im">import</span> KNeighborsClassifier</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>knn <span class="op">=</span> Pipeline([</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>(<span class="st">"scaler"</span>, StandardScaler()),</span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>(<span class="st">"knn"</span>, KNeighborsClassifier(n_neighbors<span class="op">=</span><span class="dv">5</span>))</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>knn.fit(X_train, y_train)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> knn.predict(X_test)</span>
-<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Accuracy:"</span>, accuracy_score(y_test, pred))</span>
-<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(classification_report(y_test, pred, target_names<span class="op">=</span>data.target_names))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="63fde756" class="cell" data-execution_count="5">
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.956140350877193
               precision    recall  f1-score   support
@@ -456,144 +601,95 @@ weighted avg       0.96      0.96      0.96       114
 </div>
 </section>
 </section>
-<section id="decision-tree" class="level1">
-<h1>4) Decision Tree</h1>
-<section id="idea-3" class="level2">
-<h2 class="anchored" data-anchor-id="idea-3">Idea</h2>
+<section id="decision-tree" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> 4) Decision Tree</h1>
+<section id="idea-3" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="idea-3"><span class="header-section-number">4.1</span> Idea</h2>
 <p>Split data by feature thresholds to reduce impurity (Gini/Entropy).</p>
 </section>
-<section id="when-to-use-3" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-use-3">When to use</h2>
+<section id="when-to-use-3" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="when-to-use-3"><span class="header-section-number">4.2</span> When to use</h2>
 <ul>
 <li>Mixed feature importance explanations</li>
 <li>Easy visualization (but can overfit)</li>
 </ul>
-<div id="19426564" class="cell" data-execution_count="6">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>tree <span class="op">=</span> DecisionTreeClassifier(max_depth<span class="op">=</span><span class="dv">4</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>tree.fit(X_train, y_train)</span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> tree.predict(X_test)</span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Accuracy:"</span>, accuracy_score(y_test, pred))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f53ef0d5" class="cell" data-execution_count="6">
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.9385964912280702</code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="random-forest" class="level1">
-<h1>5) Random Forest</h1>
-<section id="idea-4" class="level2">
-<h2 class="anchored" data-anchor-id="idea-4">Idea</h2>
+<section id="random-forest" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> 5) Random Forest</h1>
+<section id="idea-4" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="idea-4"><span class="header-section-number">5.1</span> Idea</h2>
 <p>Many trees + bagging; reduces overfitting and improves stability.</p>
 </section>
-<section id="when-to-use-4" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-use-4">When to use</h2>
+<section id="when-to-use-4" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="when-to-use-4"><span class="header-section-number">5.2</span> When to use</h2>
 <ul>
 <li>Strong general-purpose model</li>
 <li>Good with tabular data</li>
 </ul>
-<div id="094f0de9" class="cell" data-execution_count="7">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.ensemble <span class="im">import</span> RandomForestClassifier</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>rf <span class="op">=</span> RandomForestClassifier(</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>n_estimators<span class="op">=</span><span class="dv">300</span>,</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>max_depth<span class="op">=</span><span class="va">None</span>,</span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>random_state<span class="op">=</span><span class="dv">42</span>,</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>n_jobs<span class="op">=-</span><span class="dv">1</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>rf.fit(X_train, y_train)</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> rf.predict(X_test)</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Accuracy:"</span>, accuracy_score(y_test, pred))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="b3f1203c" class="cell" data-execution_count="7">
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.9473684210526315</code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="support-vector-machine-svm" class="level1">
-<h1>6) Support Vector Machine (SVM)</h1>
-<section id="idea-5" class="level2">
-<h2 class="anchored" data-anchor-id="idea-5">Idea</h2>
+<section id="support-vector-machine-svm" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> 6) Support Vector Machine (SVM)</h1>
+<section id="idea-5" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="idea-5"><span class="header-section-number">6.1</span> Idea</h2>
 <p>Find a maximum-margin boundary; kernels allow nonlinear separation.</p>
 </section>
-<section id="when-to-use-5" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-use-5">When to use</h2>
+<section id="when-to-use-5" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="when-to-use-5"><span class="header-section-number">6.2</span> When to use</h2>
 <ul>
 <li>Medium-sized data</li>
 <li>Strong classifier with scaling</li>
 </ul>
-<div id="12f63751" class="cell" data-execution_count="8">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.svm <span class="im">import</span> SVC</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>svm <span class="op">=</span> Pipeline([</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>(<span class="st">"scaler"</span>, StandardScaler()),</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>(<span class="st">"svc"</span>, SVC(kernel<span class="op">=</span><span class="st">"rbf"</span>, C<span class="op">=</span><span class="fl">2.0</span>, gamma<span class="op">=</span><span class="st">"scale"</span>))</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>])</span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>svm.fit(X_train, y_train)</span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> svm.predict(X_test)</span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Accuracy:"</span>, accuracy_score(y_test, pred))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="96808806" class="cell" data-execution_count="8">
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.9824561403508771</code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="naive-bayes" class="level1">
-<h1>7) Naive Bayes</h1>
-<section id="idea-6" class="level2">
-<h2 class="anchored" data-anchor-id="idea-6">Idea</h2>
+<section id="naive-bayes" class="level1" data-number="7">
+<h1 data-number="7"><span class="header-section-number">7</span> 7) Naive Bayes</h1>
+<section id="idea-6" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="idea-6"><span class="header-section-number">7.1</span> Idea</h2>
 <p>Probability-based classifier assuming feature independence.</p>
 </section>
-<section id="when-to-use-6" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-use-6">When to use</h2>
+<section id="when-to-use-6" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="when-to-use-6"><span class="header-section-number">7.2</span> When to use</h2>
 <ul>
 <li>Text classification, quick baselines</li>
 <li>Very fast</li>
 </ul>
-<div id="8eeb2e76" class="cell" data-execution_count="9">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.naive_bayes <span class="im">import</span> GaussianNB</span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>nb <span class="op">=</span> GaussianNB()</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>nb.fit(X_train, y_train)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>pred <span class="op">=</span> nb.predict(X_test)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Accuracy:"</span>, accuracy_score(y_test, pred))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="1b5b3a58" class="cell" data-execution_count="9">
 <div class="cell-output cell-output-stdout">
 <pre><code>Accuracy: 0.9385964912280702</code></pre>
 </div>
 </div>
 </section>
 </section>
-<section id="k-means-clustering" class="level1">
-<h1>8) k-Means (Clustering)</h1>
-<section id="idea-7" class="level2">
-<h2 class="anchored" data-anchor-id="idea-7">Idea</h2>
+<section id="k-means-clustering" class="level1" data-number="8">
+<h1 data-number="8"><span class="header-section-number">8</span> 8) k-Means (Clustering)</h1>
+<section id="idea-7" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="idea-7"><span class="header-section-number">8.1</span> Idea</h2>
 <p>Unsupervised grouping by minimizing distance to cluster centers.</p>
 </section>
-<section id="when-to-use-7" class="level2">
-<h2 class="anchored" data-anchor-id="when-to-use-7">When to use</h2>
+<section id="when-to-use-7" class="level2" data-number="8.2">
+<h2 data-number="8.2" class="anchored" data-anchor-id="when-to-use-7"><span class="header-section-number">8.2</span> When to use</h2>
 <ul>
 <li>Market segmentation, grouping patterns</li>
 <li>Quick exploratory clustering</li>
 </ul>
-<div id="0c5ef0a2" class="cell" data-execution_count="10">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.datasets <span class="im">import</span> make_blobs</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.cluster <span class="im">import</span> KMeans</span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>Xc, _ <span class="op">=</span> make_blobs(n_samples<span class="op">=</span><span class="dv">300</span>, centers<span class="op">=</span><span class="dv">4</span>, random_state<span class="op">=</span><span class="dv">42</span>, cluster_std<span class="op">=</span><span class="fl">1.2</span>)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>kmeans <span class="op">=</span> KMeans(n_clusters<span class="op">=</span><span class="dv">4</span>, n_init<span class="op">=</span><span class="dv">10</span>, random_state<span class="op">=</span><span class="dv">42</span>)</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> kmeans.fit_predict(Xc)</span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>plt.scatter(Xc[:,<span class="dv">0</span>], Xc[:,<span class="dv">1</span>], c<span class="op">=</span>labels)</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>plt.title(<span class="st">"k-Means clustering"</span>)</span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>plt.show()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div id="f4f6a084" class="cell" data-execution_count="10">
 <div class="cell-output cell-output-stderr">
 <pre><code>C:\Users\noors\anaconda3\envs\quarto\Lib\site-packages\sklearn\cluster\_kmeans.py:1419: UserWarning:
 
@@ -610,8 +706,8 @@ KMeans is known to have a memory leak on Windows with MKL, when there are less c
 </div>
 </section>
 </section>
-<section id="quick-comparison-table" class="level1">
-<h1>Quick Comparison Table</h1>
+<section id="quick-comparison-table" class="level1" data-number="9">
+<h1 data-number="9"><span class="header-section-number">9</span> Quick Comparison Table</h1>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 15%">
@@ -655,8 +751,8 @@ KMeans is known to have a memory leak on Windows with MKL, when there are less c
 </table>
 <hr>
 </section>
-<section id="homework-ideas" class="level1">
-<h1>Homework Ideas</h1>
+<section id="homework-ideas" class="level1" data-number="10">
+<h1 data-number="10"><span class="header-section-number">10</span> Homework Ideas</h1>
 <ol type="1">
 <li>Train <strong>Logistic Regression + Random Forest</strong> and compare <strong>F1</strong>.</li>
 <li>Add <strong>hyperparameter tuning</strong> (GridSearchCV) for SVM or RF.</li>
