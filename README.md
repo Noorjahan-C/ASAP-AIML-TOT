@@ -1,2 +1,2 @@
 # ASAP TRAINING
-## SESSIN 1
+## Sessi 1: https://noorjahan-c.github.io/ASAP-AIML-TOT/svm.html
